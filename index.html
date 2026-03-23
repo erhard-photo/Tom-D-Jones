@@ -3,739 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tom D. Jones - Beeldtaal Analyse met AI</title>
+    <title>Tom D. Jones - Beeldtaal Analyse</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-/* 1. BASIS SETUP */
-* {
-  box-sizing: border-box;
-}
+        /* 1. ONTWERP: STRAK & MINIMALISTISCH */
+        * { box-sizing: border-box; }
+        body { background-color: #F3F4F6; display: flex; flex-direction: column; align-items: center; gap: 50px; margin: 0; min-height: 100vh; padding: 60px 0; font-family: 'Lato', sans-serif; }
+        
+        .slide-container { 
+            background-color: #FFFFFF; 
+            border-radius: 4px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
+            display: flex; 
+            flex-direction: column; 
+            height: 720px; 
+            width: 1280px; 
+            padding: 60px 80px; 
+            position: relative; 
+            overflow: hidden; 
+        }
 
-p {
-  margin: 0;
-  margin-bottom: 15px;
-}
+        h1, h2, h3 { color: #1A1A1A; font-family: 'Playfair Display', serif; margin: 0; }
+        h1 { font-size: 72px; margin-bottom: 15px; }
+        .slide-title { font-size: 40px; margin-bottom: 40px; border-bottom: 1px solid #EEE; padding-bottom: 15px; width: 100%; }
+        
+        p, li, .subtitle { font-size: 20px; line-height: 1.6; color: #444; font-weight: 300; }
+        .subtitle { font-family: 'Playfair Display', serif; font-style: italic; color: #777; font-size: 24px; margin-bottom: 30px; }
 
-body {
-  background-color: #F3F4F6;
-  display: grid;
-  gap: 30px;
-  grid-template-columns: 1fr;
-  margin: 0;
-  min-height: 100vh;
-  padding: 30px 0;
-  place-items: center;
-  /* Zorgt ervoor dat het printen netjes per slide gaat */
-  @media print {
-      background-color: transparent;
-      padding: 0;
-      gap: 0;
-      display: block;
-  }
-}
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; height: 100%; align-items: center; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 18px; padding-left: 25px; position: relative; }
+        li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: #999; border-radius: 50%; }
 
-.slide-container {
-  align-items: center;
-  background-color: #FFFFFF;
-  border-radius: 4px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  font-family: 'Lato', sans-serif;
-  height: 720px;
-  justify-content: center;
-  overflow: hidden;
-  padding: 60px 80px;
-  position: relative;
-  width: 1280px;
-  
-  /* Print instellingen per slide */
-  @media print {
-      box-shadow: none;
-      page-break-after: always;
-      margin: 0;
-      border-radius: 0;
-  }
-}
+        .image-wrapper { 
+            background: white; 
+            border: 1px solid #F0F0F0; 
+            height: 440px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .image-wrapper img { max-height: 100%; max-width: 100%; object-fit: contain; }
 
-/* 2. TYPOGRAFIE */
-.slide-container h1,
-.slide-container h2,
-.slide-container h3 {
-  color: #1A1A1A;
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-  margin: 0;
-}
+        /* ✨ AI FUNCTIONALITEIT STIJL */
+        .ai-fab { position: fixed; bottom: 30px; right: 30px; background: #1A1A1A; color: white; border: none; padding: 14px 24px; border-radius: 30px; cursor: pointer; z-index: 100; box-shadow: 0 5px 15px rgba(0,0,0,0.2); font-family: 'Lato', sans-serif; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px; }
+        .modal-overlay.active { display: flex; }
+        .modal-card { background: white; padding: 40px; border-radius: 8px; max-width: 600px; width: 100%; position: relative; max-height: 80vh; overflow-y: auto; }
+        .close-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #999; }
+        .loader { border: 3px solid #f3f3f3; border-top: 3px solid #333; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; display: none; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-.slide-container p,
-.slide-container li,
-.slide-container .subtitle,
-.slide-container .tile p,
-.slide-container .bleed-text-side p {
-  color: #404040;
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-}
-
-.slide-container h1 {
-  font-size: 72px;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-  margin-bottom: 15px;
-}
-
-.slide-container .slide-title {
-  font-size: 44px;
-  font-weight: 400;
-  margin-bottom: 50px;
-  text-align: left;
-  width: 100%;
-  border-bottom: 1px solid #E5E5E5;
-  padding-bottom: 15px;
-}
-
-.slide-container h3 {
-  font-size: 28px;
-  font-weight: 400;
-  margin-bottom: 15px;
-}
-
-.slide-container p,
-.slide-container li,
-.slide-container .subtitle,
-.slide-container .bleed-text-side p {
-  font-size: 20px;
-  line-height: 1.6;
-}
-
-.slide-container .subtitle {
-  font-size: 24px;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  color: #737373;
-  margin-bottom: 30px;
-}
-
-.slide-container .content-area {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 100%;
-}
-
-/* 3. LAY-OUT DEFINITIES */
-.title-layout {
-  text-align: left;
-  width: 100%;
-  padding-left: 40px;
-  border-left: 4px solid #A3A3A3;
-}
-
-.title-layout p.motivation {
-  margin-top: 40px;
-  max-width: 800px;
-  font-size: 18px;
-  color: #737373;
-  border-top: 1px solid #E5E5E5;
-  padding-top: 20px;
-}
-
-.two-column {
-  align-items: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  width: 100%;
-  height: 100%;
-}
-
-.two-column ul {
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-}
-
-.two-column li {
-  margin-bottom: 24px;
-  padding-left: 30px;
-  position: relative;
-}
-
-.two-column li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 12px;
-  width: 6px;
-  height: 6px;
-  background-color: #A3A3A3;
-  border-radius: 50%;
-}
-
-.two-column li strong {
-  color: #1A1A1A;
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-}
-
-/* Fotokaders in passe-partout stijl */
-.image-wrapper {
-  background-color: #FFFFFF;
-  border: 1px solid #F0F0F0;
-  border-radius: 2px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 440px;
-  padding: 24px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.image-wrapper img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  width: auto;
-}
-
-/* Tegels voor techniek slide */
-.tiled-content {
-  align-items: stretch;
-  display: flex;
-  gap: 40px;
-  justify-content: center;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.tile {
-  align-items: center;
-  background-color: #FFFFFF;
-  border-radius: 4px;
-  border: 1px solid #E5E5E5;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  justify-content: flex-start;
-  padding: 40px 30px;
-  text-align: center;
-}
-
-.tile .icon {
-  color: #737373;
-  font-size: 40px;
-  margin-bottom: 25px;
-}
-
-.tile p {
-  font-size: 18px;
-  margin-bottom: 0;
-}
-
-/* Slide 7: Layout waarbij de foto de hele rechterkant vult */
-.slide-container.bleed-image-layout {
-  align-items: start;
-  display: grid;
-  gap: 60px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  padding: 0;
-}
-
-.slide-container.bleed-image-layout > .content-container {
-  padding: 80px 40px 80px 80px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.slide-container.bleed-image-layout > .image-container {
-  height: 100%;
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-}
-
-/* 4. AI INTEGRATION STYLES */
-.ai-fab {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  background: linear-gradient(135deg, #1A202C, #2D3748);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 15px 25px;
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.ai-fab:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-}
-
-.ai-upload-area {
-  background-color: #F7FAFC;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  text-align: center;
-  border-left: 1px solid #E2E8F0;
-}
-
-.btn-primary {
-  background-color: #4A5568;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  font-family: 'Lato', sans-serif;
-  margin-top: 20px;
-  transition: background-color 0.2s;
-}
-
-.btn-primary:hover { background-color: #2D3748; }
-
-.btn-sparkle {
-  background: linear-gradient(135deg, #667EEA, #764BA2);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  font-family: 'Lato', sans-serif;
-  margin-top: 15px;
-  transition: opacity 0.2s;
-  box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
-}
-
-.btn-sparkle:hover { opacity: 0.9; }
-
-/* Modal Styles */
-.modal-overlay {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.modal-content {
-  background: white;
-  width: 90%;
-  max-width: 600px;
-  max-height: 80vh;
-  border-radius: 8px;
-  padding: 40px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-  font-family: 'Lato', sans-serif;
-  position: relative;
-}
-
-.modal-close {
-  position: absolute;
-  top: 20px; right: 20px;
-  background: none; border: none;
-  font-size: 24px; cursor: pointer; color: #718096;
-}
-
-.modal-body {
-  overflow-y: auto;
-  color: #2D3748;
-  line-height: 1.6;
-}
-
-.modal-body h3 {
-  font-family: 'Playfair Display', serif;
-  color: #1A202C;
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-
-.loader {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #764BA2;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin: 20px auto;
-  display: none;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@media print {
-  .ai-fab, .modal-overlay, .ai-upload-area { display: none !important; }
-}
+        @media print { 
+            body { background-color: white; padding: 0; gap: 0; } 
+            .slide-container { box-shadow: none; page-break-after: always; border-radius: 0; } 
+            .ai-fab { display: none; } 
+        }
     </style>
 </head>
 <body>
 
-<!-- Slide 1: Titel Slide -->
+<!-- Slide 1: Intro -->
 <div class="slide-container" id="slide1">
-    <div class="title-layout">
+    <div style="border-left: 4px solid #CCC; padding-left: 40px; margin-top: 60px;">
         <h1>Tom D. Jones</h1>
         <p class="subtitle">Meester van de Abstracte Rust</p>
         <p>Opdracht Beeldtaal Analyseren & Toepassen</p>
-        <p class="motivation"><strong>Motivatie:</strong> Bewuste keuze voor lokaal Belgisch toptalent en pure, gereduceerde abstractie. Een verkenning voorbij de klassieke clichés van lange-sluitertijd fotografie.</p>
+        <p style="margin-top: 40px; color: #999; font-size: 18px; border-top: 1px solid #EEE; padding-top: 20px;">
+            <strong>Motivatie:</strong> Focus op de kracht van minimalisme en gereduceerde beeldtaal.
+        </p>
     </div>
 </div>
 
 <!-- Slide 2: Biografie -->
 <div class="slide-container" id="slide2">
     <h2 class="slide-title">Biografie & Visie</h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <ul>
-                    <li><strong>Achtergrond:</strong> Gerenommeerde Belgische Fine Art fotograaf, afkomstig uit Sint-Niklaas.</li>
-                    <li><strong>Erkenning:</strong> Werd in 2012 als eerste Belg bekroond met de prestigieuze <em>Hasselblad Master Award</em> in de categorie Landschap.</li>
-                    <li><strong>Visie:</strong> Het doelbewust creëren van momenten van absolute rust en stilte in een steeds chaotischer wordende wereld.</li>
-                    <li><strong>Stijl:</strong> Extreem minimalisme. Hij reduceert landschappen, luchten en zeeën tot hun pure, grafische essentie.</li>
-                </ul>
-            </div>
-            <div>
-                <div class="image-wrapper">
-                    <!-- Geüpdatet met de exacte filenaam uit de repo -->
-                    <img src="Tom D jones.jpg" alt="Portret van fotograaf Tom D. Jones">
-                </div>
-            </div>
+    <div class="two-column">
+        <ul>
+            <li><strong>Fotograaf:</strong> Tom D. Jones (Sint-Niklaas).</li>
+            <li><strong>Erkenning:</strong> Bekroond met de <em>Hasselblad Master Award</em> (2012).</li>
+            <li><strong>Visie:</strong> Stilte creëren in een wereld vol visuele ruis.</li>
+            <li><strong>Stijl:</strong> Fine-art landschappen met een grafische essentie.</li>
+        </ul>
+        <div class="image-wrapper">
+            <!-- Bestandsnaam met spaties correct gecodeerd -->
+            <img src="Tom%20D%20jones.jpg" alt="Portret van Tom D. Jones">
         </div>
     </div>
 </div>
 
-<!-- Slide 3: Techniek -->
+<!-- Slide 3: Analyse 1 (Namaken) -->
 <div class="slide-container" id="slide3">
-    <h2 class="slide-title">Typerende Techniek</h2>
-    <div class="content-area">
-        <div class="tiled-content">
-            <div class="tile">
-                <div class="icon"><i class="fa-solid fa-water"></i></div>
-                <h3>Long Exposure</h3>
-                <p>Gebruik van extreem lange sluitertijden om textuur uit bewegende elementen te halen, resulterend in fluweelzachte abstractie.</p>
-            </div>
-            <div class="tile">
-                <div class="icon"><i class="fa-solid fa-camera-rotate"></i></div>
-                <h3>Optische Filters</h3>
-                <p>Intensief en gestapeld gebruik van zware ND-filters (Neutral Density) om het licht te blokkeren en zachtheid te creëren.</p>
-            </div>
-            <div class="tile">
-                <div class="icon"><i class="fa-solid fa-sliders"></i></div>
-                <h3>Nabewerking (LDR)</h3>
-                <p>Een bewuste Low Dynamic Range benadering. Het beeld wordt opzettelijk vlak gehouden met een 'High Key' afwerking zonder puur zwart.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Slide 4: Analyse Te Namaken Werk -->
-<div class="slide-container" id="slide4">
     <h2 class="slide-title">Analyse 1: Te Namaken Werk</h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <ul>
-                    <li><strong>Compositie:</strong> Radicaal minimalisme. Een uiterst lege compositie waarbij de horizon de basis vormt voor weidse abstractie.</li>
-                    <li><strong>Licht & Kleur:</strong> Extreem 'High Key' (ETTR). Een bijna monochroom palet van lichte, koele grijstinten en een uiterst subtiele ondertoon. Pure rust.</li>
-                    <li><strong>Techniek:</strong> Een lange sluitertijd gecombineerd met filters of atmosferische sfeer. Alle harde textuur is weggenomen.</li>
-                </ul>
-            </div>
-            <div>
-                <div class="image-wrapper">
-                    <!-- Geüpdatet met de exacte filenaam uit de repo -->
-                    <img src="Tom-D-Jones---opdracht-namaken-werk.jpg" alt="Tom D. Jones - Te namaken werk">
-                </div>
-            </div>
+    <div class="two-column">
+        <ul>
+            <li><strong>Compositie:</strong> Lage horizon legt de nadruk op de weidse lucht.</li>
+            <li><strong>Licht:</strong> High-key belichting voor zachte, serene grijstinten.</li>
+            <li><strong>Techniek:</strong> Lange sluitertijd voor abstractie en rust.</li>
+        </ul>
+        <div class="image-wrapper">
+            <img src="Tom-D-Jones---opdracht-namaken-werk.jpg" alt="[Afbeelding van Tom D. Jones Analyse 1]">
         </div>
     </div>
 </div>
 
-<!-- Slide 5: Analyse Viridian -->
+<!-- Slide 4: Analyse 2 (Viridian) -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Analyse 2: Viridian</h2>
+    <div class="two-column">
+        <ul>
+            <li><strong>Symmetrie:</strong> De horizonlijn zorgt voor een perfecte balans.</li>
+            <li><strong>Kleur:</strong> Subtiel verloop van koel cyaan naar warm pastelgeel.</li>
+            <li><strong>Reflectie:</strong> Water gedraagt zich als een rimpelloze spiegel.</li>
+        </ul>
+        <div class="image-wrapper">
+            <!-- Bestandsnaam met spaties correct gecodeerd -->
+            <img src="Viridian-bekend%20werk%201.jpg" alt="[Afbeelding van Tom D. Jones - Viridian]">
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: Analyse 3 -->
 <div class="slide-container" id="slide5">
-    <h2 class="slide-title">Analyse 2: Symmetrie (Viridian)</h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <ul>
-                    <li><strong>Compositie:</strong> Vrijwel perfecte en serene symmetrie. De horizon ligt net boven het midden. Een subtiel eilandje breekt de lijnen als visueel ankerpunt.</li>
-                    <li><strong>Licht & Kleur:</strong> Meesterlijke kleurharmonie. Een onmerkbare gradiënt van koel cyaan op de voorgrond naar warm pastelgeel op de horizon.</li>
-                    <li><strong>Textuur:</strong> Boterzachte reflecties. Het ondiepe water gedraagt zich dankzij de lange belichting als een perfecte, rimpelloze spiegel.</li>
-                </ul>
-            </div>
-            <div>
-                <div class="image-wrapper">
-                    <!-- Geüpdatet met de exacte filenaam uit de repo -->
-                    <img src="Viridian-bekend werk 1.jpg" alt="Tom D. Jones - Viridian">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Slide 6: Analyse Minimalisme -->
-<div class="slide-container" id="slide6">
     <h2 class="slide-title">Analyse 3: Minimalisme</h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <ul>
-                    <li><strong>Compositie:</strong> Radicaal minimalisme. Drie pure horizontale vlakken; het onderscheid tussen zee en lucht valt bijna volledig weg.</li>
-                    <li><strong>Licht & Kleur:</strong> Zachte, lichte pastel- en subtiele grijstinten vloeien gewichtloos in elkaar over in een uiterst zacht contrastprofiel.</li>
-                    <li><strong>Techniek:</strong> Lange sluitertijd gecombineerd met atmosferische sfeer. De toeschouwer dwingt te focussen op de pure abstractie.</li>
-                </ul>
-            </div>
-            <div>
-                <div class="image-wrapper">
-                    <!-- Geüpdatet met de exacte filenaam uit de repo -->
-                    <img src="bekend-werk-3.jpg" alt="Tom D. Jones - Pastel Minimalisme">
-                </div>
-            </div>
+    <div class="two-column">
+        <ul>
+            <li><strong>Abstractie:</strong> Zee en lucht smelten dromerig samen.</li>
+            <li><strong>Vorm:</strong> Drie horizontale vlakken in visuele balans.</li>
+            <li><strong>Impact:</strong> Kracht door weglating van alle details.</li>
+        </ul>
+        <div class="image-wrapper">
+            <img src="bekend-werk-3.jpg" alt="[Afbeelding van Tom D. Jones Analyse 3]">
         </div>
     </div>
 </div>
 
-<!-- Slide 7: Vertaling naar Eigen Werk met AI Uploader -->
-<div class="slide-container bleed-image-layout" id="slide7">
-    <div class="content-container">
-        <h2 class="slide-title">Vertaling naar Eigen Werk</h2>
-        <div class="content-area">
-            <div class="bleed-text-side">
-                <p><strong>Uitdaging:</strong> De grensloze leegte en abstractie van het werk vertalen naar het landschap in het binnenland (Limburg).</p>
-                <p><strong>Locatie & Compositie:</strong> Een open akker of weiland, gefotografeerd tijdens dichte ochtendmist of met bewuste compressie. Een telelens isoleert de plek waardoor de horizonlijn verdwijnt of minimaliseert.</p>
-                <p><strong>Techniek:</strong> High-Key belichting (ETTR). In de RAW-nabewerking worden lokaal contrast en textuur drastisch verlaagd voor zachte overgangen in de lucht.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- ✨ AI Foto Uploader -->
-    <div class="image-container ai-upload-area">
-        <i class="fa-solid fa-camera-retro" style="font-size: 64px; margin-bottom: 20px; color: #A0AEC0;"></i>
-        <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: #2D3748; margin-bottom: 10px;">Jouw Vertaling</h3>
-        <p style="font-size: 16px; color: #718096;">Upload jouw eigen 'Limburg' foto hier en laat de AI beoordelen hoe goed het de Tom D. Jones stijl (minimalisme, high-key) benadert.</p>
-        
-        <input type="file" id="userPhotoInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
-        <button class="btn-primary" onclick="document.getElementById('userPhotoInput').click()">Selecteer Foto</button>
-        
-        <img id="userPhotoPreview" style="display: none; max-width: 100%; max-height: 400px; margin-top: 20px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <button id="btnAnalysePhoto" class="btn-sparkle" style="display: none;" onclick="analyzeUserPhoto()">✨ Analyseer Mijn Foto</button>
-    </div>
-</div>
-
-<!-- ✨ AI Floating Action Button voor Sprekersnotities -->
-<button class="ai-fab" onclick="generateSpeakerNotes()">
-    <i class="fa-solid fa-wand-magic-sparkles"></i> ✨ Genereer Sprekersnotities
+<!-- AI Sprekersnotities Knop -->
+<button class="ai-fab" onclick="getNotes()">
+    <i class="fa-solid fa-wand-magic-sparkles"></i> ✨ Sprekersnotities
 </button>
 
-<!-- ✨ AI Modal / Message Box -->
-<div class="modal-overlay" id="aiModal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
-        <div class="modal-body" id="aiModalBody">
-            <h3>✨ AI Resultaat</h3>
-            <div id="loader" class="loader"></div>
-            <div id="aiResponseContent"></div>
-        </div>
+<!-- AI Modal -->
+<div class="modal-overlay" id="modal">
+    <div class="modal-card">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <h3 id="mTitle">AI Assistent</h3>
+        <div id="loader" class="loader"></div>
+        <div id="aiOut" style="margin-top: 20px; color: #333; line-height: 1.6;"></div>
     </div>
 </div>
 
 <script>
-    // --- GEMINI API SETUP ---
-    const apiKey = ""; // API Key wordt automatisch door de omgeving geleverd.
-    const apiEndpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+    const apiKey = ""; 
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
-    // --- STATE MANAGEMENT ---
-    let currentActiveSlideText = "";
-    let uploadedBase64Image = null;
-    let uploadedMimeType = null;
+    let currentText = "";
 
-    // --- INTERSECTION OBSERVER (Weet welke slide in beeld is) ---
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
-    const slideObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                currentActiveSlideText = entry.target.innerText;
-            }
-        });
-    }, observerOptions);
+    const obs = new IntersectionObserver((es) => {
+        es.forEach(e => { if(e.isIntersecting) currentText = e.target.innerText; });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.slide-container').forEach(s => obs.observe(s));
 
-    document.querySelectorAll('.slide-container').forEach(slide => slideObserver.observe(slide));
+    function closeModal() { document.getElementById('modal').classList.remove('active'); }
 
-    // --- UTILITY: EXPONENTIAL BACKOFF FETCH ---
-    async function fetchWithRetry(url, options, maxRetries = 5) {
-        const delays = [1000, 2000, 4000, 8000, 16000];
-        for (let i = 0; i < maxRetries; i++) {
-            try {
-                const response = await fetch(url, options);
-                if (!response.ok) throw new Error(`HTTP fout! status: ${response.status}`);
-                return await response.json();
-            } catch (error) {
-                if (i === maxRetries - 1) throw error;
-                await new Promise(res => setTimeout(res, delays[i]));
-            }
-        }
-    }
-
-    // --- UI FUNCTIES ---
-    function openModal(titleText) {
-        document.getElementById('aiModal').classList.add('active');
-        document.getElementById('aiModalBody').querySelector('h3').innerText = titleText;
+    async function callAI(prompt) {
+        document.getElementById('modal').classList.add('active');
         document.getElementById('loader').style.display = 'block';
-        document.getElementById('aiResponseContent').innerHTML = '';
-    }
-
-    function closeModal() {
-        document.getElementById('aiModal').classList.remove('active');
-    }
-
-    function showError(message) {
-        document.getElementById('loader').style.display = 'none';
-        document.getElementById('aiResponseContent').innerHTML = `<p style="color: #E53E3E;"><i class="fa-solid fa-circle-exclamation"></i> ${message}</p>`;
-    }
-
-    // --- AI FEATURE 1: SPREKERSNOTITIES (TEXT) ---
-    async function generateSpeakerNotes() {
-        openModal("✨ Sprekersnotities voor deze slide");
-
-        if (!apiKey) {
-            showError("API sleutel ontbreekt in deze runtime omgeving.");
-            return;
-        }
-
-        const prompt = `Je bent een vriendelijke, professionele presentatie-coach voor een fotografie-student. 
-        De student geeft een presentatie over de beeldtaal van fine-art fotograaf Tom D. Jones. 
-        Schrijf korte, vlotte sprekersnotities in het Nederlands voor de huidige slide om te helpen bij de mondelinge presentatie in de klas.
-        Maak het natuurlijk om uit te spreken (gebruik steekwoorden of korte zinnen).
-        
-        Inhoud van de slide die nu in beeld is:
-        ${currentActiveSlideText}
-        
-        Formatteer het antwoord in simpele HTML (bijv. <ul>, <li>, <strong>) zonder markdown code blokken.`;
-
-        const payload = {
-            contents: [{ parts: [{ text: prompt }] }]
-        };
-
+        document.getElementById('aiOut').innerHTML = "";
         try {
-            const data = await fetchWithRetry(apiEndpoint, {
-                method: 'POST',
+            const res = await fetch(endpoint, { 
+                method: 'POST', 
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) 
             });
-
-            const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Kon geen notities genereren.";
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('aiResponseContent').innerHTML = text;
-        } catch (error) {
-            showError("Er is een fout opgetreden bij het verbinden met de Gemini API: " + error.message);
+            const data = await res.json();
+            const reply = data.candidates[0].content.parts[0].text;
+            document.getElementById('aiOut').innerHTML = reply.replace(/\n/g, '<br>');
+        } catch (e) { 
+            document.getElementById('aiOut').innerHTML = "De AI assistent is tijdelijk niet bereikbaar. Controleer je internet."; 
+        } finally { 
+            document.getElementById('loader').style.display = 'none'; 
         }
     }
 
-    // --- AI FEATURE 2: FOTO CRITICUS (VISION) ---
-    function handleImageUpload(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        uploadedMimeType = file.type;
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-            uploadedBase64Image = e.target.result;
-            const preview = document.getElementById('userPhotoPreview');
-            preview.src = uploadedBase64Image;
-            preview.style.display = 'block';
-            
-            document.querySelector('.ai-upload-area i').style.display = 'none';
-            document.querySelector('.ai-upload-area h3').style.display = 'none';
-            document.querySelector('.ai-upload-area p').style.display = 'none';
-            
-            document.getElementById('btnAnalysePhoto').style.display = 'inline-block';
-        };
-        reader.readAsDataURL(file);
-    }
-
-    async function analyzeUserPhoto() {
-        if (!uploadedBase64Image) return;
-
-        openModal("✨ Feedback op jouw fotografiewerk");
-
-        if (!apiKey) {
-            showError("API sleutel ontbreekt in deze runtime omgeving.");
-            return;
-        }
-
-        const prompt = `Je bent docent 'Beeldtaal en Fotografie' in België. 
-        De student heeft de opdracht gekregen om de stijl van fine-art fotograaf Tom D. Jones (minimalisme, lange sluitertijd, abstract, High-Key/ETTR belichting, lege composities met lage horizon) toe te passen op een landschap in het binnenland.
-        
-        Analyseer de bijgevoegde foto van de student. 
-        Geef opbouwend kritiek in het Nederlands op:
-        1. Compositie (Is het minimalistisch? Waar ligt de horizon?)
-        2. Licht (Is het voldoende High-Key? Is het contrast zacht?)
-        3. Tom D. Jones Sfeer (Klopt de algemene etherische abstractie?)
-        
-        Sluit af met 1 concrete tip voor verbetering in Lightroom of tijdens het fotograferen in het veld.
-        Formatteer in simpele HTML (gebruik <h3>, <ul>, <li>, <strong>) zonder markdown code blokken.`;
-
-        const base64Data = uploadedBase64Image.split(',')[1];
-
-        const payload = {
-            contents: [{
-                role: "user",
-                parts: [
-                    { text: prompt },
-                    { inlineData: { mimeType: uploadedMimeType, data: base64Data } }
-                ]
-            }]
-        };
-
-        try {
-            const data = await fetchWithRetry(apiEndpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Kon de foto niet analyseren.";
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('aiResponseContent').innerHTML = text;
-        } catch (error) {
-            showError("Er is een fout opgetreden bij de beeldanalyse: " + error.message);
-        }
+    function getNotes() { 
+        callAI(`Schrijf korte, enthousiaste sprekersnotities in het Nederlands voor deze presentatie-slide over de fotograaf Tom D. Jones: ${currentText}`); 
     }
 </script>
 
