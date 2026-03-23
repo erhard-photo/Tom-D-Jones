@@ -55,6 +55,37 @@
         
         @keyframes fadeSlide { from { opacity: 0; } to { opacity: 1; } }
 
+        /* PREVIEW TITELS (Zichtbaar voordat de overlay komt) */
+        .preview-title {
+            position: absolute;
+            top: 50px;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+            z-index: 2;
+            transition: opacity 0.5s ease-out;
+            pointer-events: none;
+        }
+
+        .preview-title.center-large {
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 90px;
+            font-weight: 600;
+            letter-spacing: 5px;
+            color: #FFFFFF;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.9);
+        }
+
+        /* Verberg de preview titel zodra de overlay opent */
+        .slide-container.show-overlay .preview-title {
+            opacity: 0;
+        }
+
         /* Donkere laag over de foto (Standaard onzichtbaar, wacht op klik) */
         .slide-container::before {
             content: '';
@@ -157,6 +188,9 @@
     
     <!-- Slide 1: Introductie -->
     <div class="slide-container active" id="slide0" style="background-image: url('Tom%20D%20jones%20-%20foto%20als%20omslag%20-starter.jpg');">
+        <!-- Kleine, initiële hooding -->
+        <div class="preview-title center-large">Tom D. Jones</div>
+
         <div class="slide-content-overlay">
             <h1>Foto van een bekend fotograaf namaken</h1>
             <p class="subtitle">Tom D. Jones - Beeldtaal Analyse</p>
@@ -179,6 +213,8 @@
 
     <!-- Slide 2: Biografie, Visie & Techniek -->
     <div class="slide-container" id="slide1" style="background-image: url('Tom-D-Jones-aan-het-werk.jpg'); background-position: top center;">
+        <div class="preview-title">Biografie, Visie & Techniek</div>
+
         <div class="slide-content-overlay" style="max-width: 1200px;">
             <h2 class="slide-title">Biografie, Visie & Typerende Techniek</h2>
             <div class="two-column">
@@ -209,6 +245,8 @@
 
     <!-- Slide 3: Inspiratiebron 1 (Viridian) -->
     <div class="slide-container" id="slide2" style="background-image: url('Viridian-bekend%20werk%201.jpg');">
+        <div class="preview-title">Inspiratie 1: Viridian</div>
+
         <div class="slide-content-overlay">
             <h2 class="slide-title">Inspiratie 1: Balans in Viridian</h2>
             <ul>
@@ -223,6 +261,8 @@
 
     <!-- Slide 4: Inspiratiebron 2 (Pastel Minimalisme) -->
     <div class="slide-container" id="slide3" style="background-image: url('bekend-werk-3.jpg');">
+        <div class="preview-title">Inspiratie 2: Pastel Minimalisme</div>
+
         <div class="slide-content-overlay">
             <h2 class="slide-title">Inspiratie 2: Pastel Minimalisme</h2>
             <ul>
@@ -237,6 +277,8 @@
 
     <!-- Slide 5: Na te maken werk (Aether) -->
     <div class="slide-container" id="slide4" style="background-image: url('Tom-D-Jones---opdracht-namaken-werk.jpg');">
+        <div class="preview-title">Na te maken werk: Aether H14</div>
+
         <div class="slide-content-overlay">
             <h2 class="slide-title">Na te maken werk: Aether H14</h2>
             <ul>
@@ -251,6 +293,8 @@
 
     <!-- Slide 6: Eigen Werk Analyse -->
     <div class="slide-container" id="slide5" style="background-image: url('nagemaakte-Tom-D-Jones.jpg');">
+        <div class="preview-title">Concept: Artistieke Vertaling</div>
+
         <div class="slide-content-overlay">
             <h2 class="slide-title">Conceptueel Plan: Artistieke Vertaling</h2>
             <ul>
@@ -271,6 +315,8 @@
 
     <!-- Slide 7: Afsluiting Continuum -->
     <div class="slide-container" id="slide6" style="background-image: url('Tom-D-Jones-Continuum-end-slide.jpg');">
+        <div class="preview-title center-large">Continuum</div>
+
         <div class="slide-content-overlay" style="padding: 70px;">
             <h1 style="font-size: 72px; margin-bottom: 20px;">Erhard dankt u voor uw aandacht.</h1>
             <p class="subtitle" style="font-size: 30px; margin-bottom: 10px;">Presentatie Beeldtaal Analyse</p>
@@ -404,4 +450,3 @@
 
 </body>
 </html>
-```
