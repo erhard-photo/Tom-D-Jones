@@ -41,10 +41,10 @@
             top: 0; left: 0;
             background-size: cover;
             background-position: center;
-            align-items: center;
-            justify-content: center;
+            align-items: center; 
+            justify-content: center; 
             z-index: 1;
-            image-rendering: high-quality; /* Zorgt voor scherpere weergave op beamers */
+            image-rendering: high-quality;
         }
         
         .slide-container.active { 
@@ -71,14 +71,12 @@
             pointer-events: none;
         }
 
-        .preview-title.center-large {
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 90px;
-            font-weight: 600;
-            letter-spacing: 5px;
-            color: #FFFFFF;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.9);
+        /* Specifieke zwarte titel bovenaan voor slide 1 & 7 */
+        .preview-title.black-top {
+            color: #000000;
+            text-shadow: none;
+            font-weight: 700;
+            font-size: 32px;
         }
 
         /* Verberg de preview titel zodra de overlay opent */
@@ -188,8 +186,8 @@
     
     <!-- Slide 1: Introductie -->
     <div class="slide-container active" id="slide0" style="background-image: url('Tom%20D%20jones%20-%20foto%20als%20omslag%20-starter.jpg');">
-        <!-- Kleine, initiële hooding -->
-        <div class="preview-title center-large">Tom D. Jones</div>
+        <!-- Zwarte titel bovenaan -->
+        <div class="preview-title black-top">Tom D. Jones</div>
 
         <div class="slide-content-overlay">
             <h1>Foto van een bekend fotograaf namaken</h1>
@@ -223,14 +221,14 @@
                         <li><strong>Tom D. Jones</strong> (°1971): Belgische fine-art fotograaf. Won in 2012 als eerste Belg de prestigieuze <strong>Hasselblad Master Award</strong>.</li>
                         <li><strong>Visie & Stijl:</strong> <strong>"Weglaten is toevoegen."</strong> Minimalistische landschappen waarbij hij de natuur stript van visuele ruis. De horizon vormt het ankerpunt in de leegte.</li>
                         <li><strong>Techniek:</strong>
-                            <ul style="margin-top: 15px;">
+                            <ul style="margin-top: 10px;">
                                 <li><strong>Belichtingstijd:</strong> ND-filters (1 sec tot minutenlange belichtingen afhankelijk van gewenste structuur).</li>
                                 <li><strong>Licht:</strong> High-Key (ETTR) voor lichte, zachte sfeer.</li>
                                 <li><strong>Objectief:</strong> Telelenzen voor perspectivische compressie.</li>
                             </ul>
                         </li>
                     </ul>
-                    <!-- Grafisch Element toegevoegd -->
+                    <!-- Grafisch Element -->
                     <img src="Hasselblad Masters.png" alt="Hasselblad Masters Logo" class="hasselblad-badge" onerror="this.style.display='none';">
                 </div>
                 <div class="grid-4">
@@ -245,7 +243,7 @@
 
     <!-- Slide 3: Inspiratiebron 1 (Viridian) -->
     <div class="slide-container" id="slide2" style="background-image: url('Viridian-bekend%20werk%201.jpg');">
-        <div class="preview-title">Inspiratie 1: Viridian</div>
+        <div class="preview-title">Inspiratie 1: Balans in Viridian</div>
 
         <div class="slide-content-overlay">
             <h2 class="slide-title">Inspiratie 1: Balans in Viridian</h2>
@@ -313,17 +311,18 @@
         </div>
     </div>
 
-    <!-- Slide 7: Afsluiting Continuum -->
+    <!-- Slide 7: Afsluiting -->
     <div class="slide-container" id="slide6" style="background-image: url('Tom-D-Jones-Continuum-end-slide.jpg');">
-        <div class="preview-title center-large">Continuum</div>
+        <!-- Zwarte titel bovenaan -->
+        <div class="preview-title black-top">Tom D. Jones</div>
 
         <div class="slide-content-overlay" style="padding: 70px;">
-            <h1 style="font-size: 72px; margin-bottom: 20px;">Erhard dankt u voor uw aandacht.</h1>
-            <p class="subtitle" style="font-size: 30px; margin-bottom: 10px;">Presentatie Beeldtaal Analyse</p>
-            <p style="font-size: 20px; color: #A0AEC0;">Tom D. Jones</p>
-            <!-- Grafisch Element toegevoegd op eindscherm -->
+            <h1 style="font-size: 56px; margin-bottom: 30px; font-style: italic;">"Alles staat of valt met je voorbereiding."</h1>
+            <p class="subtitle" style="font-size: 28px; margin-bottom: 20px;">— Tom D. Jones</p>
+            
             <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px;">
-                <img src="Hasselblad Masters.png" alt="Hasselblad Masters Logo" style="max-width: 160px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+                <p style="font-size: 24px; font-weight: 700; color: #FFF;">Erhard dankt u voor uw aandacht.</p>
+                <img src="Hasselblad Masters.png" alt="Hasselblad Masters Logo" style="max-width: 140px; margin-top: 20px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
             </div>
         </div>
     </div>
