@@ -10,20 +10,20 @@
         * { box-sizing: border-box; }
         body { background-color: #1A1A1A; margin: 0; padding: 0; font-family: 'Lato', sans-serif; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
         .presentation-wrapper { position: relative; width: 1280px; height: 720px; display: flex; align-items: center; justify-content: center; }
-        .slide-container { background-color: #FFFFFF; border-radius: 6px; display: none; flex-direction: column; height: 100%; width: 100%; padding: 60px 80px; position: absolute; animation: fadeIn 0.4s ease-out; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .slide-container { background-color: #FFFFFF; border-radius: 6px; display: none; flex-direction: column; height: 100%; width: 100%; padding: 50px 80px; position: absolute; animation: fadeIn 0.4s ease-out; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
         .slide-container.active { display: flex; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         
         h1, h2, h3 { color: #1A1A1A; font-family: 'Playfair Display', serif; margin: 0; }
         h1 { font-size: 64px; margin-bottom: 15px; }
-        .slide-title { font-size: 34px; margin-bottom: 25px; border-bottom: 1px solid #EEE; padding-bottom: 15px; width: 100%; }
-        p, li { font-size: 17px; line-height: 1.6; color: #444; font-weight: 300; }
+        .slide-title { font-size: 34px; margin-bottom: 20px; border-bottom: 1px solid #EEE; padding-bottom: 10px; width: 100%; }
+        p, li { font-size: 16px; line-height: 1.5; color: #444; font-weight: 300; }
         .subtitle { font-family: 'Playfair Display', serif; font-style: italic; color: #777; font-size: 24px; margin-bottom: 30px; }
         
         .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 100%; align-items: start; }
         ul { list-style: none; padding: 0; margin-top: 10px; }
-        li { margin-bottom: 12px; padding-left: 20px; position: relative; }
-        li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; background: #888; border-radius: 50%; }
+        li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; background: #888; border-radius: 50%; }
         
         .image-wrapper { background: white; border: 1px solid #F0F0F0; height: 440px; display: flex; align-items: center; justify-content: center; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border-radius: 4px; }
         .image-wrapper img { max-height: 100%; max-width: 100%; object-fit: contain; }
@@ -59,125 +59,137 @@
         <div style="border-left: 4px solid #CCC; padding-left: 40px; margin-top: 60px;">
             <h1>Tom D. Jones</h1>
             <p class="subtitle">De Architectuur van de Stilte</p>
-            <p><strong>Biografie & Situering:</strong> Tom D. Jones (1971, Sint-Niklaas) is een Belgische fine-art fotograaf die wereldwijde faam verwierf met zijn verstilde landschappen. Hij won in 2012 de prestigieuze <em>Hasselblad Master Award</em>.</p>
-            <div style="margin-top: 40px; padding: 25px; background: #F9F9F9; border-radius: 6px; border: 1px solid #E5E5E5;">
-                <p style="margin: 0; color: #555;">
-                    <i class="fa-solid fa-graduation-cap" style="color: #1A1A1A; margin-right: 10px;"></i>
-                    <strong>Studieproject:</strong> Deze website dient als portfolio-onderdeel en beeldtaal-analyse voor mijn opleiding tot <strong>Vakfotograaf bij Qrios Tongeren</strong>.
+            
+            <p><strong>Presentatie & Beeldtaal Analyse</strong> door [Jouw Naam]</p>
+            
+            <div style="margin-top: 30px; padding: 20px; background: #F9F9F9; border-radius: 6px; border: 1px solid #E5E5E5;">
+                <p style="margin: 0; color: #333;">
+                    <strong>Motivatie:</strong> Ik heb bewust gekozen voor een lokaal Belgisch toptalent. Zijn werk spreekt mij aan vanwege de pure, gereduceerde abstractie die veel verder gaat dan de klassieke landschapsfotografie.
                 </p>
+            </div>
+
+            <div style="margin-top: 20px; padding: 20px; border-radius: 6px; color: #666; font-size: 14px;">
+                <i class="fa-solid fa-graduation-cap"></i> <strong>Opleiding:</strong> Vakfotograaf bij Qrios Tongeren
             </div>
         </div>
     </div>
 
     <!-- Slide 2: Stijl & Visie -->
     <div class="slide-container" id="slide1">
-        <h2 class="slide-title">Fotografische Stijl & Visie</h2>
+        <h2 class="slide-title">Biografie, Stijl & Visie</h2>
         <div class="two-column">
             <div>
-                <p><strong>Stijl:</strong> Extreem minimalisme. Hij stript het landschap van visuele ruis tot er slechts pure vormen en lichtvlakken overblijven.</p>
-                <p><strong>Visie:</strong> "Weglaten is toevoegen." Hij zoekt naar de emotionele essentie van ruimte en oneindigheid, ver weg van de dagelijkse chaos.</p>
                 <ul>
-                    <li><strong>Ruimte:</strong> De horizon fungeert als krachtig ankerpunt voor de leegte.</li>
-                    <li><strong>Tijd:</strong> Het creëren van een 'tijdloze' staat door bewuste techniek.</li>
+                    <li><strong>Biografie & Situering:</strong> Tom D. Jones (1971, Sint-Niklaas) is een Belgische fine-art fotograaf. Zijn werk situeert zich in de hedendaagse, minimalistische landschapsfotografie. Hij won in 2012 als eerste Belg de prestigieuze <em>Hasselblad Master Award</em>.</li>
+                    <li><strong>Stijl:</strong> Extreem minimalisme. Hij stript het landschap van visuele ruis tot er slechts pure vormen en kleurvlakken overblijven.</li>
+                    <li><strong>Visie:</strong> "Weglaten is toevoegen." Hij wil de toeschouwer dwingen tot rust. Hij zoekt niet naar een exacte registratie van de realiteit, maar naar de emotionele essentie van ruimte en oneindigheid.</li>
                 </ul>
             </div>
-            <div class="image-wrapper">
-                <img src="Tom%20D%20Jones%20portret.jpg" alt="Portret Tom D. Jones">
+            <div class="image-wrapper" style="padding: 0; border: none; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+                <img src="Tom%20D%20Jones%20portret.jpg" alt="Portret Tom D. Jones" style="object-fit: cover; width: 100%; height: 100%;" onerror="this.src='https://placehold.co/400x600/EEE/AAA?text=Portret+Tom+D+Jones';">
             </div>
         </div>
     </div>
 
     <!-- Slide 3: Typerende Techniek -->
     <div class="slide-container" id="slide2">
-        <h2 class="slide-title">De Technische Signatuur</h2>
+        <h2 class="slide-title">Typerende Techniek</h2>
         <div class="two-column">
             <div>
-                <p>Jones hanteert een uiterst strikte technische methode:</p>
+                <p>Wat is er zo typerend aan zijn foto's? Jones hanteert een strikte technische methode om zijn visie tot leven te wekken:</p>
                 <ul>
-                    <li><strong>Sluitertijden:</strong> Gebruik van ND-filters om beweging te sturen. Van 1-2 seconden voor behoud van lichte textuur, tot minutenlange belichtingen voor totale abstractie.</li>
-                    <li><strong>ETTR:</strong> (Expose to the Right) Maximaal licht vangen voor de typische heldere High-Key sfeer.</li>
-                    <li><strong>Optiek:</strong> Telelenzen voor perspectivische compressie.</li>
-                    <li><strong>Nabewerking:</strong> LDR (Low Dynamic Range) met zacht contrast.</li>
+                    <li><strong>Sluitertijden:</strong> Hij gebruikt zware ND-filters (Neutral Density) om beweging te sturen. Dit varieert van 1 à 2 seconden voor het behoud van structuur, tot minutenlange belichtingen voor absolute vervaging.</li>
+                    <li><strong>Belichting:</strong> <em>Expose to the Right (ETTR)</em>. Hij vangt maximaal licht voor een heldere, lichte 'High-Key' sfeer zonder detailverlies in de hooglichten.</li>
+                    <li><strong>Optiek:</strong> Het gebruik van telelenzen zorgt voor perspectivische compressie (diepte wordt platgedrukt).</li>
                 </ul>
             </div>
             <div class="grid-4">
                  <div class="grid-item"><i class="fa-solid fa-stopwatch"></i><p>ND-Filters & Tijd</p></div>
                  <div class="grid-item"><i class="fa-solid fa-sun"></i><p>High-Key (ETTR)</p></div>
                  <div class="grid-item"><i class="fa-solid fa-compress"></i><p>Compressie</p></div>
-                 <div class="grid-item"><i class="fa-solid fa-paintbrush"></i><p>LDR Finish</p></div>
+                 <div class="grid-item"><i class="fa-solid fa-paintbrush"></i><p>Zacht Contrast</p></div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 4: Benchmark (Aether) -->
+    <!-- Slide 4: Analyse 1 (Aether H14) -->
     <div class="slide-container" id="slide3">
-        <h2 class="slide-title">Benchmark: Oneindigheid in Aether H14</h2>
+        <h2 class="slide-title">Top 3 & Inspiratie 1: Aether H14</h2>
         <div class="two-column">
             <div>
-                <p><strong>Te namaken werk:</strong> Dit vormt de visuele blauwdruk voor mijn opdracht.</p>
                 <ul>
-                    <li><strong>Compositie:</strong> Horizon op 1/4e, extreem laag camerastandpunt.</li>
-                    <li><strong>Licht & Kleur:</strong> Diffuus licht; kleurharmonie in zachte grijstinten.</li>
-                    <li><strong>Techniek:</strong> Diafragma f/11, ISO 100, en een cruciale sluitertijd van <strong>1 tot 2 seconden</strong>. Hierdoor blijven de wolken scherp gedetailleerd, terwijl de zee een zachte, vloeiende beweging krijgt.</li>
+                    <li><strong>Context:</strong> Bekroond werk en mijn primaire inspiratiebron voor de opdracht (Te namaken werk).</li>
+                    <li><strong>Compositie:</strong> Extreem laag camerastandpunt. Horizon op 1/4e. De weidse beeldtaal legt alle focus op de lucht.</li>
+                    <li><strong>Licht & Kleur:</strong> Diffuus licht. Subtiel kleurcontrast met een harmonie van zachte, monochromatische grijstinten.</li>
+                    <li><strong>Textuur:</strong> Contrast tussen de scherpe, dreigende wolken en het licht onscherpe, vloeiende water.</li>
+                    <li><strong>Techniek:</strong> Teleobjectief, diafragma rond f/11 (grote scherptediepte), ISO 100. Een <strong>sluitertijd van 1 à 2 seconden</strong> behoudt de wolkendetails.</li>
                 </ul>
-                <p style="background: #F3F4F6; padding: 15px; border-radius: 4px; font-size: 15px;"><strong>Mijn Uitvoering:</strong> Ik gebruik deze techniek (1-2 sec sluiter met lichte ND-filter) als basis. Ik houd de optie open voor de kust, maar onderzoek ook de vertaling naar een lokaal landschap.</p>
             </div>
             <div class="image-wrapper">
-                <img src="Tom-D-Jones---opdracht-namaken-werk.jpg" alt="Aether H14">
+                <img src="Tom-D-Jones---opdracht-namaken-werk.jpg" alt="Aether H14" onerror="this.src='https://placehold.co/600x400/EEE/AAA?text=Aether+H14';">
             </div>
         </div>
     </div>
 
-    <!-- Slide 5: Inspiratiebron 2 (Viridian) -->
+    <!-- Slide 5: Analyse 2 (Viridian) -->
     <div class="slide-container" id="slide4">
-        <h2 class="slide-title">Inspiratie: Balans in Viridian</h2>
+        <h2 class="slide-title">Top 3 & Inspiratie 2: Viridian</h2>
         <div class="two-column">
             <div>
-                <p><strong>Analyse:</strong></p>
                 <ul>
-                    <li><strong>Compositie:</strong> Centrale plaatsing eiland zorgt voor absolute rust.</li>
-                    <li><strong>Kleur:</strong> Contrast tussen koel cyaan en warm pastelgeel.</li>
-                    <li><strong>Textuur:</strong> Zijdezacht wateroppervlak (minutenlange belichting).</li>
-                    <li><strong>Context:</strong> Fine-art interpretatie van een verstilde kustlijn.</li>
+                    <li><strong>Context:</strong> Bekroonde foto uit de Hasselblad-winnende reeks. Illustreert perfecte stilte.</li>
+                    <li><strong>Compositie:</strong> Symmetrische beeldtaal. Centrale plaatsing van het hoofdonderwerp (eiland). Horizon in het midden.</li>
+                    <li><strong>Licht & Kleur:</strong> Zacht licht met een opvallende kleurharmonie: een verloop van koel cyaan naar warm pastelgeel.</li>
+                    <li><strong>Textuur:</strong> Zijdezacht en spiegelend wateroppervlak zonder enige rimpeling.</li>
+                    <li><strong>Techniek:</strong> Standaard objectief (ca. 50mm), f/11, ISO 100. Minutenlange belichting met zware ND-filters.</li>
                 </ul>
             </div>
             <div class="image-wrapper">
-                <img src="Viridian-bekend%20werk%201.jpg" alt="Viridian">
+                <img src="Viridian-bekend%20werk%201.jpg" alt="Viridian" onerror="this.src='https://placehold.co/600x400/EEE/AAA?text=Viridian';">
             </div>
         </div>
     </div>
 
-    <!-- Slide 6: Inspiratiebron 3 (Pastel) -->
+    <!-- Slide 6: Analyse 3 (Pastel Minimalisme) -->
     <div class="slide-container" id="slide5">
-        <h2 class="slide-title">Inspiratie: Pastel Minimalisme</h2>
+        <h2 class="slide-title">Top 3 & Inspiratie 3: Pastel Minimalisme</h2>
         <div class="two-column">
             <div>
-                <p><strong>Analyse:</strong></p>
                 <ul>
-                    <li><strong>Compositie:</strong> Drie pure horizontale vlakken in visuele balans.</li>
-                    <li><strong>Licht:</strong> Zacht, uniform licht zonder harde schaduwen.</li>
-                    <li><strong>Techniek:</strong> Maximale scherptediepte (f/16) over de kleurvlakken.</li>
-                    <li><strong>Beeldtaal:</strong> Reductie van realiteit tot pure kleurvelden.</li>
+                    <li><strong>Context:</strong> Bekroond abstract landschap. Focus ligt puur op geometrie in plaats van realiteit.</li>
+                    <li><strong>Compositie:</strong> Neutraal standpunt. Abstracte beeldtaal opgebouwd uit drie pure horizontale vlakken.</li>
+                    <li><strong>Licht & Kleur:</strong> Zacht, uniform licht zonder schaduwen. Kleurharmonie in pastel roze en blauw.</li>
+                    <li><strong>Textuur:</strong> Volledig vlak en rimpelloos, als een schilderij.</li>
+                    <li><strong>Techniek:</strong> Telelens voor compressie, f/16 voor maximale scherptediepte over alle vlakken, sluitertijd van > 30 seconden.</li>
                 </ul>
             </div>
             <div class="image-wrapper">
-                <img src="bekend-werk-3.jpg" alt="Pastel Minimalisme">
+                <img src="bekend-werk-3.jpg" alt="Pastel Minimalisme" onerror="this.src='https://placehold.co/600x400/EEE/AAA?text=Pastel+Minimalisme';">
             </div>
         </div>
     </div>
 
     <!-- Slide 7: Eigen Werk Analyse -->
     <div class="slide-container" id="slide6">
-        <h2 class="slide-title">Conceptueel Plan: Artistieke Vertaling</h2>
+        <h2 class="slide-title">Concept: Artistieke Vertaling (Opdracht)</h2>
         <div class="two-column">
             <div>
-                <p><strong>De Proefversie (Mockup):</strong> Om te tonen hoe ik de abstractie van 'Aether' vertaal naar het binnenland, heb ik een schets gemaakt door een landschap te tekenen over de bestaande foto.</p>
-                <p><strong>Compositie:</strong> Horizon op 1/3e om focus te houden op de scherpe wolkenband.</p>
-                <p><strong>Kleur & Photoshop:</strong> Vanuit een High-Key opname pas ik color-grading toe. De koele zee-tinten worden omgezet naar warme <strong>bruine aardetinten</strong> om de Limburgse akker te simuleren.</p>
-                <p><strong>Techniek Doel:</strong> 1-2 sec belichting (f/11, ISO 100, ND-filter) voor scherpe wolken, gecombineerd met een digitaal verzachte ondergrond.</p>
+                <p><strong>Context & Mockup:</strong> Een landschapsschets over 'Aether H14', ter voorbereiding op mijn eigen Limburgse shoot.</p>
+                
+                <p><strong>Compositie:</strong> Horizon op 1/3e. Scherpstelling ligt op 1/3e van de diepte voor maximale hyperfocale scherpte (f/11).</p>
+                
+                <p><strong>Licht & Kleur:</strong> Ochtendlicht voor zachte tinten. Via color-grading (Photoshop) creëer ik een complementair contrast: koele wolken tegenover <strong>warme bruine aardetinten</strong> (Limburgse akker).</p>
+
+                <p style="margin-bottom: 5px; font-weight: 700; border-bottom: 1px solid #EEE; padding-bottom: 5px;">Mijn Techniek Checklist:</p>
+                <ul style="margin-top: 5px;">
+                    <li><strong>Objectief:</strong> 85mm of 105mm (compressie).</li>
+                    <li><strong>Camera:</strong> Statief + Zelfontspanner (Vibratiereductie UIT).</li>
+                    <li><strong>Belichting:</strong> 1-2 sec sluitertijd (ND-filter), ISO 100, f/11.</li>
+                    <li><strong>Kleur:</strong> Manuele witbalans voor consistente tinten.</li>
+                </ul>
             </div>
-            <div class="image-wrapper" style="border: 2px dashed #AAA; padding: 15px;">
-                <img src="nagemaakte-Tom-D-Jones.jpg" alt="Mockup artistieke vertaling">
+            <div class="image-wrapper" style="border: 2px dashed #AAA; padding: 15px; border-radius: 8px;">
+                <img src="nagemaakte-Tom-D-Jones.jpg" alt="Mockup artistieke vertaling" style="object-fit: cover; width: 100%; height: 100%;" onerror="this.src='https://placehold.co/600x400/EEE/AAA?text=Mockup+Foto';">
             </div>
         </div>
     </div>
@@ -228,7 +240,7 @@
         document.getElementById('aiOut').innerHTML = "";
         
         const currentContent = slides[currentSlide].innerText;
-        const prompt = `Je bent docent fotografie. Schrijf 3 korte, krachtige sprekersnotities in het Nederlands voor een student van Qrios Tongeren. Focus op compositie, techniek (High-Key, 1-2 sec sluitertijd) en licht. Inhoud slide: ${currentContent}`;
+        const prompt = `Je bent docent fotografie. Schrijf 3 korte, krachtige sprekersnotities in het Nederlands voor een student van Qrios Tongeren. Focus op de formele analyse (compositie, techniek, licht, etc.). Inhoud slide: ${currentContent}`;
 
         try {
             const res = await fetch(endpoint, { 
