@@ -61,7 +61,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.65);
+            background: rgba(0,0,0,0.5);
             opacity: 0;
             z-index: 2;
             transition: opacity 0.6s ease-out;
@@ -74,24 +74,15 @@
             top: 50px;
             width: 100%;
             text-align: center;
-            color: #000000; /* Veranderd naar zwart zoals gevraagd */
+            color: #000000; 
             font-family: 'Playfair Display', serif;
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             z-index: 4;
             transition: opacity 0.5s ease-out;
             pointer-events: none;
-        }
-
-        /* Responsive fonts voor mobiel */
-        @media (max-width: 768px) {
-            .preview-title { font-size: 22px; top: 30px; }
-            h1 { font-size: 36px !important; }
-            .slide-title { font-size: 26px !important; }
-            p, li { font-size: 16px !important; }
-            .slide-content-overlay { padding: 20px 30px !important; }
-            .subtitle { font-size: 24px !important; }
+            text-transform: uppercase;
         }
 
         /* Verberg de preview titel zodra de overlay opent */
@@ -103,16 +94,16 @@
         .slide-content-overlay {
             position: relative;
             z-index: 3;
-            background: rgba(15, 15, 20, 0.65);
+            background: rgba(255, 255, 255, 0.85); /* Lichter gemaakt voor zwarte koppen */
             padding: 40px 60px;
-            border-radius: 12px;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.3);
             max-width: 1050px;
             width: 90%;
             max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -128,30 +119,42 @@
             pointer-events: auto;
         }
 
-        /* 5. TYPOGRAFIE */
-        h1, h2, h3 { color: #FFFFFF; font-family: 'Playfair Display', serif; margin: 0; }
-        h1 { font-size: 64px; margin-bottom: 15px; line-height: 1.1; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .slide-title { font-size: 40px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; width: 100%; color: #FFFFFF; text-align: left; }
+        /* 5. TYPOGRAFIE - ALLE HEADINGS ZWART */
+        h1, h2, h3, .slide-title { color: #000000 !important; font-family: 'Playfair Display', serif; margin: 0; }
         
-        p, li { font-size: 20px; line-height: 1.5; color: #E2E8F0; font-weight: 300; margin-top: 0; margin-bottom: 12px;}
-        strong { font-weight: 700; color: #FFFFFF; }
-        .subtitle { font-family: 'Playfair Display', serif; font-style: italic; color: #CBD5E0; font-size: 30px; margin-bottom: 25px; text-shadow: 1px 1px 10px rgba(0,0,0,0.5); }
+        h1 { font-size: 64px; margin-bottom: 15px; line-height: 1.1; }
+        .slide-title { font-size: 40px; margin-bottom: 20px; border-bottom: 2px solid rgba(0,0,0,0.1); padding-bottom: 10px; width: 100%; text-align: left; }
         
+        p, li { font-size: 20px; line-height: 1.5; color: #222; font-weight: 400; margin-top: 0; margin-bottom: 12px;}
+        strong { font-weight: 700; color: #000; }
+        .subtitle { font-family: 'Playfair Display', serif; font-style: italic; color: #444; font-size: 30px; margin-bottom: 25px; }
+        
+        /* RESPONSIVE VOOR MOBIEL */
+        @media (max-width: 768px) {
+            .preview-title { font-size: 20px; top: 25px; }
+            h1 { font-size: 32px !important; }
+            .slide-title { font-size: 24px !important; }
+            p, li { font-size: 15px !important; line-height: 1.4; }
+            .slide-content-overlay { padding: 20px 25px !important; }
+            .subtitle { font-size: 20px !important; }
+            .hasselblad-badge { max-width: 80px !important; }
+        }
+
         /* LAYOUT & LIJSTEN */
         .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; text-align: left; }
         
         ul { list-style: none; padding: 0; margin-top: 0; text-align: left; }
         li { margin-bottom: 14px; padding-left: 25px; position: relative; }
-        li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: #A0AEC0; border-radius: 50%; }
+        li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; background: #000; border-radius: 50%; }
         
-        .motivation-box { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 20px; border-radius: 8px; margin-top: 25px; text-align: center; }
+        .motivation-box { background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1); padding: 20px; border-radius: 4px; margin-top: 25px; text-align: center; }
         
         .grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .grid-item { background: rgba(255,255,255,0.05); padding: 20px 15px; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.15); }
-        .grid-item i { font-size: 32px; color: #FFF; margin-bottom: 10px; }
-        .grid-item p { font-size: 15px; margin: 0; font-weight: 700; color: #FFF;}
+        .grid-item { background: rgba(0,0,0,0.03); padding: 20px 15px; border-radius: 4px; text-align: center; border: 1px solid rgba(0,0,0,0.08); }
+        .grid-item i { font-size: 32px; color: #000; margin-bottom: 10px; }
+        .grid-item p { font-size: 14px; margin: 0; font-weight: 700; color: #000;}
 
-        /* Grafisch Element: Logo rechtsboven */
+        /* Hasselblad Logo Rechtsboven */
         .hasselblad-badge-container {
             position: absolute;
             top: 30px;
@@ -160,15 +163,20 @@
         }
         .hasselblad-badge {
             max-width: 140px;
-            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.4));
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.2));
         }
 
-        /* 6. NAVIGATIE BALK */
+        /* Museum Spotlight effect voor laatste slide */
+        .museum-spotlight {
+            box-shadow: inset 0 0 200px rgba(0,0,0,0.8);
+        }
+
+        /* NAVIGATIE BALK */
         .nav-bar { position: fixed; bottom: 30px; display: flex; align-items: center; gap: 25px; z-index: 1000; }
-        .nav-btn { background-color: rgba(255, 255, 255, 0.15); color: white; border: 1px solid rgba(255, 255, 255, 0.3); padding: 14px 30px; border-radius: 30px; cursor: pointer; font-family: 'Lato', sans-serif; font-size: 16px; transition: 0.2s; display: flex; align-items: center; gap: 10px; backdrop-filter: blur(5px); }
+        .nav-btn { background-color: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 12px 28px; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif; font-size: 15px; transition: 0.2s; display: flex; align-items: center; gap: 10px; backdrop-filter: blur(5px); }
         .nav-btn:hover:not(:disabled) { background-color: white; color: black; }
         .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; border-color: transparent; }
-        .slide-counter { color: #FFFFFF; font-size: 16px; letter-spacing: 1px; font-weight: 700; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
+        .slide-counter { color: #FFFFFF; font-size: 14px; letter-spacing: 1px; font-weight: 700; }
         
     </style>
 </head>
@@ -181,46 +189,45 @@
         <div class="preview-title">Tom D. Jones</div>
 
         <div class="slide-content-overlay">
-            <h1>Foto van een bekend fotograaf namaken</h1>
-            <p class="subtitle">Tom D. Jones - Beeldtaal Analyse</p>
+            <h1>Beeldtaal Analyse</h1>
+            <p class="subtitle">"Weglaten is toevoegen"</p>
             
-            <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 25px;">
-                <p style="font-size: 24px; font-weight: 700; color: #FFF; text-align: center;">Presentatie door Erhard Kuyken</p>
-                <p style="font-size: 18px; color: #CBD5E0; line-height: 1.6; text-align: center;">
+            <div style="margin-top: 30px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 25px;">
+                <p style="font-size: 24px; font-weight: 700; color: #000; text-align: center;">Erhard Kuyken</p>
+                <p style="font-size: 18px; color: #444; line-height: 1.6; text-align: center;">
                     <i class="fa-solid fa-graduation-cap"></i> Opleiding Vakfotograaf | Qrios Tongeren<br>
                     <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i> Maart 2026 | Fotografie Module 4
                 </p>
             </div>
             
             <div class="motivation-box">
-                <p style="margin: 0; color: #FFF; font-size: 18px; line-height: 1.6;">
-                    <strong>Motivatie:</strong> Ik koos bewust voor dit lokaal Belgisch toptalent. Zijn werk spreekt mij aan vanwege de pure, gereduceerde abstractie die de klassieke landschapsfotografie overstijgt.
+                <p style="margin: 0; font-size: 18px; line-height: 1.6;">
+                    <strong>Motivatie:</strong> De keuze voor Tom D. Jones is geworteld in zijn vermogen om de natuur te herleiden tot pure rust. Zijn werk benadert de schilderkunst door radicale reductie.
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- Slide 2: Biografie, Visie & Techniek -->
+    <!-- Slide 2: Biografie & Techniek -->
     <div class="slide-container" id="slide1" style="background-image: url('Tom-D-Jones-aan-het-werk.jpg'); background-position: top center;">
-        <div class="preview-title">Biografie, Visie & Techniek</div>
+        <div class="preview-title">Biografie & Techniek</div>
         
-        <!-- Hasselblad logo verplaatst naar rechtsboven op slide 2 -->
         <div class="hasselblad-badge-container">
             <img src="Hasselblad Masters.png" alt="Hasselblad Masters Logo" class="hasselblad-badge" onerror="this.style.display='none';">
         </div>
 
         <div class="slide-content-overlay" style="max-width: 1200px;">
-            <h2 class="slide-title">Biografie, Visie & Typerende Techniek</h2>
+            <h2 class="slide-title">Tom D. Jones: Meester van de Stilte</h2>
             <div class="two-column">
                 <div>
                     <ul>
-                        <li><strong>Tom D. Jones</strong> (°1971): Belgische fine-art fotograaf. Won in 2012 als eerste Belg de prestigieuze <strong>Hasselblad Master Award</strong>.</li>
-                        <li><strong>Visie & Stijl:</strong> <strong>"Weglaten is toevoegen."</strong> Minimalistische landschappen waarbij hij de natuur stript van visuele ruis. De horizon vormt het ankerpunt in de leegte.</li>
+                        <li><strong>Achtergrond:</strong> Gerenommeerde Belgische Fine Art fotograaf. Won in 2012 de prestigieuze <strong>Hasselblad Master Award</strong>.</li>
+                        <li><strong>Visie:</strong> Momenten van absolute rust creëren in een chaotische wereld door minimalistische abstractie.</li>
                         <li><strong>Techniek:</strong>
                             <ul style="margin-top: 10px;">
-                                <li><strong>Belichtingstijd:</strong> ND-filters (1 sec tot minutenlange belichtingen).</li>
-                                <li><strong>Licht:</strong> High-Key (ETTR) voor lichte, zachte sfeer.</li>
-                                <li><strong>Objectief:</strong> Telelenzen voor perspectivische compressie.</li>
+                                <li><strong>Sluitertijd:</strong> Gebruik van ND-filters (1 sec tot minuten).</li>
+                                <li><strong>Belichting:</strong> High-Key (ETTR) voor lichte tonen.</li>
+                                <li><strong>Optiek:</strong> Telelenzen voor perspectivische compressie.</li>
                             </ul>
                         </li>
                     </ul>
@@ -228,101 +235,96 @@
                 <div class="grid-4">
                      <div class="grid-item"><i class="fa-solid fa-stopwatch"></i><p>ND & Tijd</p></div>
                      <div class="grid-item"><i class="fa-solid fa-sun"></i><p>High-Key</p></div>
-                     <div class="grid-item"><i class="fa-solid fa-compress"></i><p>Compressie</p></div>
-                     <div class="grid-item"><i class="fa-solid fa-paintbrush"></i><p>Zacht Contrast</p></div>
+                     <div class="grid-item"><i class="fa-solid fa-compress"></i><p>Telelens</p></div>
+                     <div class="grid-item"><i class="fa-solid fa-paintbrush"></i><p>LDR Contrast</p></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 3: Inspiratiebron 1 (Viridian) -->
+    <!-- Slide 3: Inspiratie 1 -->
     <div class="slide-container" id="slide2" style="background-image: url('Viridian-bekend%20werk%201.jpg');">
-        <div class="preview-title">Inspiratie 1: Balans in Viridian</div>
+        <div class="preview-title">Inspiratie 1: Viridian</div>
 
         <div class="slide-content-overlay">
-            <h2 class="slide-title">Inspiratie 1: Balans in Viridian</h2>
+            <h2 class="slide-title">Balans & Symmetrie</h2>
             <ul>
-                <li><strong>Context:</strong> Bekroonde foto uit de Hasselblad-winnende reeks. Illustreert perfecte stilte.</li>
-                <li><strong>Compositie:</strong> Symmetrische beeldtaal. Centrale plaatsing van het eiland en de horizon.</li>
-                <li><strong>Licht & Kleur:</strong> Zacht licht met een opvallende kleurharmonie: een verloop van <strong>koel cyaan naar warm pastelgeel</strong>.</li>
-                <li><strong>Textuur:</strong> Zijdezacht en spiegelend wateroppervlak.</li>
-                <li><strong>Techniek:</strong> Standaard objectief (ca. 50mm), f/11, <strong>minutenlange belichting</strong>.</li>
+                <li><strong>Context:</strong> Bekroonde foto; illustreert perfecte, abstracte stilte.</li>
+                <li><strong>Compositie:</strong> Centraal geplaatst eiland; horizon exact in het midden.</li>
+                <li><strong>Licht & Kleur:</strong> Complementaire harmonie tussen koel cyaan en warm pastelgeel.</li>
+                <li><strong>Textuur:</strong> Boterzachte reflecties op rimpelloos wateroppervlak.</li>
             </ul>
         </div>
     </div>
 
-    <!-- Slide 4: Inspiratiebron 2 (Pastel Minimalisme) -->
+    <!-- Slide 4: Inspiratie 2 -->
     <div class="slide-container" id="slide3" style="background-image: url('bekend-werk-3.jpg');">
         <div class="preview-title">Inspiratie 2: Pastel Minimalisme</div>
 
         <div class="slide-content-overlay">
-            <h2 class="slide-title">Inspiratie 2: Pastel Minimalisme</h2>
+            <h2 class="slide-title">Geometrische Reductie</h2>
             <ul>
-                <li><strong>Context:</strong> Bekroond werk waarbij geometrie primeert op realiteit.</li>
-                <li><strong>Compositie:</strong> Neutraal standpunt. Het beeld is opgebouwd uit <strong>drie pure horizontale vlakken</strong>.</li>
-                <li><strong>Licht & Kleur:</strong> Uniform licht zonder schaduwen. Kleurharmonie in pastel roze en blauw.</li>
-                <li><strong>Textuur:</strong> Volledig vlak en rimpelloos.</li>
-                <li><strong>Techniek:</strong> <strong>Telelens, f/16</strong> (maximale scherptediepte), sluitertijd > 30 sec.</li>
+                <li><strong>Context:</strong> Werk waarbij geometrie primeert boven de realiteit.</li>
+                <li><strong>Compositie:</strong> Opgebouwd uit slechts drie horizontale kleurvlakken.</li>
+                <li><strong>Licht & Kleur:</strong> Uniform licht zonder schaduwen; pastel roze en blauw.</li>
+                <li><strong>Textuur:</strong> Volledig vlak, benadert een impressionistisch schilderij.</li>
             </ul>
         </div>
     </div>
 
-    <!-- Slide 5: Na te maken werk (Aether) -->
+    <!-- Slide 5: Na te maken werk -->
     <div class="slide-container" id="slide4" style="background-image: url('Tom-D-Jones---opdracht-namaken-werk.jpg');">
         <div class="preview-title">Na te maken werk: Aether H14</div>
 
         <div class="slide-content-overlay">
-            <h2 class="slide-title">Na te maken werk: Aether H14</h2>
+            <h2 class="slide-title">Analyse: Aether H14</h2>
             <ul>
-                <li><strong>Context:</strong> Bekroond werk en mijn primaire inspiratiebron voor de eindopdracht.</li>
-                <li><strong>Compositie:</strong> Extreem laag camerastandpunt. <strong>Horizon op 1/4e</strong>. De weidse beeldtaal legt alle focus op de lucht.</li>
-                <li><strong>Licht & Kleur:</strong> Diffuus licht. Subtiel kleurcontrast met een harmonie van zachte, monochromatische grijstinten.</li>
-                <li><strong>Textuur:</strong> Contrast tussen de <strong>scherpe, dreigende wolken</strong> en het licht onscherpe, vloeiende water.</li>
-                <li><strong>Techniek:</strong> Teleobjectief, diafragma rond f/11 (grote scherptediepte), ISO 100. Een <strong>sluitertijd van 1 à 2 seconden</strong> behoudt de wolkendetails.</li>
+                <li><strong>Compositie:</strong> Horizon op 1/4e voor focus op de dreigende wolkenband.</li>
+                <li><strong>Licht:</strong> Diffuus daglicht met een subtiel, monochroom blauwgrijs palet.</li>
+                <li><strong>Textuur:</strong> Contrast tussen scherpe wolken en vloeiend water.</li>
+                <li><strong>Techniek:</strong> 1 à 2 seconden sluitertijd behoudt definitie in de lucht.</li>
             </ul>
         </div>
     </div>
 
-    <!-- Slide 6: Eigen Werk Analyse -->
+    <!-- Slide 6: Eigen Werk -->
     <div class="slide-container" id="slide5" style="background-image: url('nagemaakte-Tom-D-Jones.jpg');">
         <div class="preview-title">Concept: Artistieke Vertaling</div>
 
         <div class="slide-content-overlay">
-            <h2 class="slide-title">Conceptueel Plan: Artistieke Vertaling</h2>
+            <h2 class="slide-title">Limburgse Interpretatie</h2>
             <ul>
-                <li><strong>Context & Mockup:</strong> Op de achtergrond mijn schets, als blauwdruk voor mijn eigen Limburgse shoot.</li>
-                <li><strong>Compositie:</strong> Horizon op 1/3e. Scherpstelling ligt op <strong>1/3e van de diepte</strong> in het landschap voor maximale hyperfocale scherpte (f/11).</li>
-                <li><strong>Licht & Kleur:</strong> Ochtendlicht voor zachtere tinten. Via color-grading (Photoshop) creëer ik complementair contrast: koele wolken tegenover <strong>warme bruine aardetinten</strong>.</li>
-                <li><strong>Mijn Techniek Checklist:</strong>
+                <li><strong>Locatie:</strong> Vertaling van kust-abstractie naar de Limburgse akkers.</li>
+                <li><strong>Focus:</strong> Scherpstelling op 1/3e diepte voor maximale scherpte bij f/11.</li>
+                <li><strong>Kleur:</strong> Contrast tussen koele luchten en warme bruine aardetinten.</li>
+                <li><strong>Checklist:</strong>
                     <ul style="margin-top: 10px;">
-                        <li><strong>Objectief:</strong> 85mm of 105mm (compressie).</li>
-                        <li><strong>Stabiliteit:</strong> Statief + Zelfontspanner (<strong>Vibratiereductie UIT!</strong>).</li>
-                        <li><strong>Belichting:</strong> 1-2 sec sluitertijd (ND-filter), ISO 100, f/11.</li>
-                        <li><strong>Kleur:</strong> Manuele witbalans voor consistente tinten.</li>
+                        <li><strong>Hardware:</strong> 85mm lens | Statief | Zelfontspanner.</li>
+                        <li><strong>Instelling:</strong> Vibratiereductie UIT | ISO 100.</li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 
-    <!-- Slide 7: Afsluiting met Quote -->
-    <div class="slide-container" id="slide6" style="background-image: url('Tom-D-Jones-Continuum-end-slide.jpg');">
+    <!-- Slide 7: Afsluiting -->
+    <div class="slide-container museum-spotlight" id="slide6" style="background-image: url('Tom-D-Jones-Continuum-end-slide.jpg');">
         <div class="preview-title">Tom D. Jones</div>
 
-        <div class="slide-content-overlay" style="padding: 70px;">
+        <div class="slide-content-overlay" style="padding: 70px; background: rgba(255,255,255,0.9);">
             <h1 style="font-size: 52px; margin-bottom: 30px; font-style: italic;">"Alles staat of valt met je voorbereiding."</h1>
             <p class="subtitle" style="font-size: 28px; margin-bottom: 20px;">— Tom D. Jones</p>
             
-            <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px;">
-                <p style="font-size: 24px; font-weight: 700; color: #FFF;">Erhard dankt u voor uw aandacht.</p>
-                <img src="Hasselblad Masters.png" alt="Hasselblad Masters Logo" style="max-width: 140px; margin-top: 20px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+            <div style="margin-top: 40px; border-top: 2px solid #000; padding-top: 30px;">
+                <p style="font-size: 24px; font-weight: 700; color: #000;">Erhard dankt u voor uw aandacht.</p>
+                <img src="Hasselblad Masters.png" alt="Hasselblad Masters Logo" style="max-width: 140px; margin-top: 20px;" onerror="this.style.display='none';">
             </div>
         </div>
     </div>
 
 </div>
 
-<!-- Navigatie Knoppen -->
+<!-- Navigatie -->
 <div class="nav-bar">
     <button class="nav-btn" id="prevBtn" onclick="goBack()" disabled><i class="fa-solid fa-chevron-left"></i> Terug</button>
     <div class="slide-counter" id="counter">Slide 1 / 7</div>
