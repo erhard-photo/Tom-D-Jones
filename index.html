@@ -94,7 +94,7 @@
             to { opacity: 1; transform: translateY(0); } 
         }
 
-        /* TYPOGRAFIE (Geoptimaliseerd voor donkere achtergrond) */
+        /* TYPOGRAFIE */
         h1, h2, h3 { color: #FFFFFF; font-family: 'Playfair Display', serif; margin: 0; }
         h1 { font-size: 72px; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
         .slide-title { font-size: 46px; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px; width: 100%; color: #FFFFFF; text-align: left; }
@@ -118,6 +118,14 @@
         .grid-item:hover { background: rgba(255,255,255,0.15); }
         .grid-item i { font-size: 36px; color: #FFF; margin-bottom: 15px; }
         .grid-item p { font-size: 16px; margin: 0; font-weight: 700; color: #FFF;}
+
+        /* GRAFISCHE ELEMENTEN */
+        .hasselblad-badge {
+            max-width: 140px;
+            margin-top: 15px;
+            opacity: 0.85;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.4));
+        }
 
         /* NAVIGATIE BALK */
         .nav-bar { position: fixed; bottom: 30px; display: flex; align-items: center; gap: 25px; z-index: 1000; }
@@ -182,6 +190,8 @@
                             </ul>
                         </li>
                     </ul>
+                    <!-- Grafisch Element toegevoegd -->
+                    <img src="Hasselblad Masters.png" alt="Hasselblad Masters Logo" class="hasselblad-badge" onerror="this.style.display='none';">
                 </div>
                 <div class="grid-4">
                      <div class="grid-item"><i class="fa-solid fa-stopwatch"></i><p>ND & Tijd</p></div>
@@ -193,24 +203,10 @@
         </div>
     </div>
 
-    <!-- Slide 3: Na te maken werk (Aether) -->
-    <div class="slide-container" id="slide2" style="background-image: url('Tom-D-Jones---opdracht-namaken-werk.jpg');">
+    <!-- Slide 3: Inspiratiebron 1 (Viridian) -->
+    <div class="slide-container" id="slide2" style="background-image: url('Viridian-bekend%20werk%201.jpg');">
         <div class="slide-content-overlay">
-            <h2 class="slide-title">Na te maken werk: Aether H14</h2>
-            <ul>
-                <li><strong>Context:</strong> Bekroond werk en mijn primaire inspiratiebron voor de opdracht.</li>
-                <li><strong>Compositie:</strong> Extreem laag camerastandpunt. <strong>Horizon op 1/4e</strong>. De weidse beeldtaal legt alle focus op de lucht.</li>
-                <li><strong>Licht & Kleur:</strong> Diffuus licht. Subtiel kleurcontrast met een harmonie van zachte, monochromatische grijstinten.</li>
-                <li><strong>Textuur:</strong> Contrast tussen de <strong>scherpe, dreigende wolken</strong> en het licht onscherpe, vloeiende water.</li>
-                <li><strong>Techniek:</strong> Teleobjectief, diafragma rond f/11 (grote scherptediepte), ISO 100. Een <strong>sluitertijd van 1 à 2 seconden</strong> behoudt de wolkendetails.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Slide 4: Inspiratiebron 2 (Viridian) -->
-    <div class="slide-container" id="slide3" style="background-image: url('Viridian-bekend%20werk%201.jpg');">
-        <div class="slide-content-overlay">
-            <h2 class="slide-title">Inspiratie 2: Balans in Viridian</h2>
+            <h2 class="slide-title">Inspiratie 1: Balans in Viridian</h2>
             <ul>
                 <li><strong>Context:</strong> Bekroonde foto uit de Hasselblad-winnende reeks. Illustreert perfecte stilte.</li>
                 <li><strong>Compositie:</strong> Symmetrische beeldtaal. Centrale plaatsing van het eiland en de horizon.</li>
@@ -221,10 +217,10 @@
         </div>
     </div>
 
-    <!-- Slide 5: Inspiratiebron 3 (Pastel Minimalisme) -->
-    <div class="slide-container" id="slide4" style="background-image: url('bekend-werk-3.jpg');">
+    <!-- Slide 4: Inspiratiebron 2 (Pastel Minimalisme) -->
+    <div class="slide-container" id="slide3" style="background-image: url('bekend-werk-3.jpg');">
         <div class="slide-content-overlay">
-            <h2 class="slide-title">Inspiratie 3: Pastel Minimalisme</h2>
+            <h2 class="slide-title">Inspiratie 2: Pastel Minimalisme</h2>
             <ul>
                 <li><strong>Context:</strong> Bekroond werk waarbij geometrie primeert op realiteit.</li>
                 <li><strong>Compositie:</strong> Neutraal standpunt. Het beeld is opgebouwd uit <strong>drie pure horizontale vlakken</strong>.</li>
@@ -235,10 +231,24 @@
         </div>
     </div>
 
+    <!-- Slide 5: Na te maken werk (Aether) -->
+    <div class="slide-container" id="slide4" style="background-image: url('Tom-D-Jones---opdracht-namaken-werk.jpg');">
+        <div class="slide-content-overlay">
+            <h2 class="slide-title">Na te maken werk: Aether H14</h2>
+            <ul>
+                <li><strong>Context:</strong> Bekroond werk en mijn primaire inspiratiebron voor de eindopdracht.</li>
+                <li><strong>Compositie:</strong> Extreem laag camerastandpunt. <strong>Horizon op 1/4e</strong>. De weidse beeldtaal legt alle focus op de lucht.</li>
+                <li><strong>Licht & Kleur:</strong> Diffuus licht. Subtiel kleurcontrast met een harmonie van zachte, monochromatische grijstinten.</li>
+                <li><strong>Textuur:</strong> Contrast tussen de <strong>scherpe, dreigende wolken</strong> en het licht onscherpe, vloeiende water.</li>
+                <li><strong>Techniek:</strong> Teleobjectief, diafragma rond f/11 (grote scherptediepte), ISO 100. Een <strong>sluitertijd van 1 à 2 seconden</strong> behoudt de wolkendetails.</li>
+            </ul>
+        </div>
+    </div>
+
     <!-- Slide 6: Eigen Werk Analyse -->
     <div class="slide-container" id="slide5" style="background-image: url('nagemaakte-Tom-D-Jones.jpg');">
         <div class="slide-content-overlay">
-            <h2 class="slide-title">Concept: Artistieke Vertaling (Mijn Opdracht)</h2>
+            <h2 class="slide-title">Conceptueel Plan: Artistieke Vertaling</h2>
             <ul>
                 <li><strong>Context & Mockup:</strong> Op de achtergrond mijn schets, als blauwdruk voor mijn eigen Limburgse shoot.</li>
                 <li><strong>Compositie:</strong> Horizon op 1/3e. Scherpstelling ligt op <strong>1/3e van de diepte</strong> in het landschap voor maximale hyperfocale scherpte (f/11).</li>
@@ -254,12 +264,26 @@
             </ul>
         </div>
     </div>
+
+    <!-- Slide 7: Afsluiting Continuum -->
+    <div class="slide-container" id="slide6" style="background-image: url('Tom-D-Jones-Continuum-end-slide.jpg');">
+        <div class="slide-content-overlay" style="padding: 70px;">
+            <h1 style="font-size: 80px; margin-bottom: 20px;">Erhard dankt u voor uw aandacht.</h1>
+            <p class="subtitle" style="font-size: 30px; margin-bottom: 10px;">Presentatie Beeldtaal Analyse</p>
+            <p style="font-size: 20px; color: #A0AEC0;">Tom D. Jones</p>
+            <!-- Grafisch Element toegevoegd op eindscherm -->
+            <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px;">
+                <img src="Hasselblad Masters.png" alt="Hasselblad Masters Logo" style="max-width: 160px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <!-- Navigatie Knoppen -->
 <div class="nav-bar">
     <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled><i class="fa-solid fa-chevron-left"></i> Terug</button>
-    <div class="slide-counter" id="counter">Slide 1 / 6</div>
+    <div class="slide-counter" id="counter">Slide 1 / 7</div>
     <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Verder <i class="fa-solid fa-chevron-right"></i></button>
 </div>
 
@@ -277,6 +301,9 @@
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide-container');
     const totalSlides = slides.length;
+
+    // Initial counter update
+    document.getElementById('counter').innerText = `Slide 1 / ${totalSlides}`;
 
     function changeSlide(dir) {
         // Reset de animatie voor de vorige slide
@@ -308,7 +335,7 @@
         document.getElementById('aiOut').innerHTML = "";
         
         const currentContent = slides[currentSlide].innerText;
-        const prompt = `Je bent docent fotografie. Schrijf 3 tot 4 korte, krachtige sprekersnotities (in opsommingsvorm) in het Nederlands voor student Erhard Kuyken van Qrios Tongeren. Focus op de formele analyse (compositie, techniek, licht, etc.). Zorg dat het vlot leest voor een mondelinge presentatie. Inhoud slide: ${currentContent}`;
+        const prompt = `Je bent docent fotografie. Schrijf 3 tot 4 korte, krachtige sprekersnotities (in opsommingsvorm) in het Nederlands voor student Erhard Kuyken van Qrios Tongeren. Focus op de formele analyse (compositie, techniek, licht). Inhoud slide: ${currentContent}`;
 
         try {
             const res = await fetch(endpoint, { 
