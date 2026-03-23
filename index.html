@@ -44,17 +44,18 @@
             align-items: center;
             justify-content: center;
             z-index: 1;
+            image-rendering: high-quality; /* Zorgt voor scherpere weergave op beamers */
         }
         
         .slide-container.active { 
             display: flex; 
             z-index: 10; 
-            animation: fadeSlide 0.8s ease-out; 
+            animation: fadeSlide 0.6s ease-out; 
         }
         
         @keyframes fadeSlide { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Donkere laag over de foto die pas na 2 sec verschijnt */
+        /* Donkere laag over de foto (Standaard onzichtbaar, wacht op klik) */
         .slide-container::before {
             content: '';
             position: absolute;
@@ -62,62 +63,65 @@
             background: rgba(0,0,0,0.65);
             opacity: 0;
             z-index: 2;
-        }
-        
-        .slide-container.active::before {
-            animation: fadeInDarkness 0.5s ease-out 2s forwards;
+            transition: opacity 0.6s ease-out;
+            pointer-events: none;
         }
 
-        /* HET TEKST BLOK (Verschijnt na 2 sec) */
+        /* HET TEKST BLOK (Standaard onzichtbaar, wacht op klik) */
         .slide-content-overlay {
             position: relative;
             z-index: 3;
             background: rgba(15, 15, 20, 0.65);
-            padding: 50px 70px;
+            padding: 40px 60px;
             border-radius: 12px;
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255,255,255,0.15);
             max-width: 1050px;
             width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
             box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             text-align: center;
-        }
-        
-        .slide-container.active .slide-content-overlay {
-            animation: delayedFadeIn 0.6s ease-out 2s forwards;
+            pointer-events: none;
         }
 
-        @keyframes fadeInDarkness { to { opacity: 1; } }
-        @keyframes delayedFadeIn { 
-            from { opacity: 0; transform: translateY(30px); } 
-            to { opacity: 1; transform: translateY(0); } 
+        /* CLASSES VOOR HET MANUEEL TONEN VAN DE TEKST (Geactiveerd met Enter) */
+        .slide-container.show-overlay::before {
+            opacity: 1;
+        }
+        .slide-container.show-overlay .slide-content-overlay {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
         }
 
         /* TYPOGRAFIE */
         h1, h2, h3 { color: #FFFFFF; font-family: 'Playfair Display', serif; margin: 0; }
-        h1 { font-size: 72px; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .slide-title { font-size: 46px; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px; width: 100%; color: #FFFFFF; text-align: left; }
+        h1 { font-size: 64px; margin-bottom: 15px; line-height: 1.1; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .slide-title { font-size: 40px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; width: 100%; color: #FFFFFF; text-align: left; }
         
-        p, li { font-size: 22px; line-height: 1.6; color: #E2E8F0; font-weight: 300; margin-top: 0; margin-bottom: 15px;}
+        p, li { font-size: 20px; line-height: 1.5; color: #E2E8F0; font-weight: 300; margin-top: 0; margin-bottom: 12px;}
         strong { font-weight: 700; color: #FFFFFF; }
-        .subtitle { font-family: 'Playfair Display', serif; font-style: italic; color: #CBD5E0; font-size: 34px; margin-bottom: 30px; text-shadow: 1px 1px 10px rgba(0,0,0,0.5); }
+        .subtitle { font-family: 'Playfair Display', serif; font-style: italic; color: #CBD5E0; font-size: 30px; margin-bottom: 25px; text-shadow: 1px 1px 10px rgba(0,0,0,0.5); }
         
         /* LAYOUT & LIJSTEN */
-        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; text-align: left; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; text-align: left; }
         
         ul { list-style: none; padding: 0; margin-top: 0; text-align: left; }
-        li { margin-bottom: 20px; padding-left: 25px; position: relative; }
-        li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; background: #A0AEC0; border-radius: 50%; }
+        li { margin-bottom: 14px; padding-left: 25px; position: relative; }
+        li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: #A0AEC0; border-radius: 50%; }
         
-        .motivation-box { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 25px; border-radius: 8px; margin-top: 35px; text-align: center; }
+        .motivation-box { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 20px; border-radius: 8px; margin-top: 25px; text-align: center; }
         
         /* GRID VOOR TECHNIEK ICOONTJES */
-        .grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .grid-item { background: rgba(255,255,255,0.05); padding: 25px 20px; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.15); transition: background 0.3s; }
+        .grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .grid-item { background: rgba(255,255,255,0.05); padding: 20px 15px; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.15); transition: background 0.3s; }
         .grid-item:hover { background: rgba(255,255,255,0.15); }
-        .grid-item i { font-size: 36px; color: #FFF; margin-bottom: 15px; }
-        .grid-item p { font-size: 16px; margin: 0; font-weight: 700; color: #FFF;}
+        .grid-item i { font-size: 32px; color: #FFF; margin-bottom: 10px; }
+        .grid-item p { font-size: 15px; margin: 0; font-weight: 700; color: #FFF;}
 
         /* GRAFISCHE ELEMENTEN */
         .hasselblad-badge {
@@ -139,7 +143,7 @@
         .ai-fab:hover { transform: scale(1.05); }
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 2000; }
         .modal-overlay.active { display: flex; }
-        .modal-card { background: white; padding: 50px; border-radius: 8px; width: 700px; position: relative; max-height: 80vh; overflow-y: auto; text-align: left; }
+        .modal-card { background: white; padding: 40px; border-radius: 8px; width: 700px; position: relative; max-height: 80vh; overflow-y: auto; text-align: left; }
         .close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 32px; cursor: pointer; color: #999; }
         .loader { border: 4px solid #f3f3f3; border-top: 4px solid #333; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; display: none; margin: 30px auto; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -157,8 +161,8 @@
             <h1>Foto van een bekend fotograaf namaken</h1>
             <p class="subtitle">Tom D. Jones - Beeldtaal Analyse</p>
             
-            <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 30px;">
-                <p style="font-size: 26px; font-weight: 700; color: #FFF; text-align: center;">Presentatie door Erhard Kuyken</p>
+            <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 25px;">
+                <p style="font-size: 24px; font-weight: 700; color: #FFF; text-align: center;">Presentatie door Erhard Kuyken</p>
                 <p style="font-size: 18px; color: #CBD5E0; line-height: 1.6; text-align: center;">
                     <i class="fa-solid fa-graduation-cap"></i> Opleiding Vakfotograaf | Qrios Tongeren<br>
                     <i class="fa-regular fa-calendar" style="margin-right: 5px;"></i> Maart 2026 | Fotografie Module 4
@@ -174,7 +178,7 @@
     </div>
 
     <!-- Slide 2: Biografie, Visie & Techniek -->
-    <div class="slide-container" id="slide1" style="background-image: url('Tom%20D%20Jones%20portret.jpg'); background-position: top center;">
+    <div class="slide-container" id="slide1" style="background-image: url('Tom-D-Jones-aan-het-werk.jpg'); background-position: top center;">
         <div class="slide-content-overlay" style="max-width: 1200px;">
             <h2 class="slide-title">Biografie, Visie & Typerende Techniek</h2>
             <div class="two-column">
@@ -268,7 +272,7 @@
     <!-- Slide 7: Afsluiting Continuum -->
     <div class="slide-container" id="slide6" style="background-image: url('Tom-D-Jones-Continuum-end-slide.jpg');">
         <div class="slide-content-overlay" style="padding: 70px;">
-            <h1 style="font-size: 80px; margin-bottom: 20px;">Erhard dankt u voor uw aandacht.</h1>
+            <h1 style="font-size: 72px; margin-bottom: 20px;">Erhard dankt u voor uw aandacht.</h1>
             <p class="subtitle" style="font-size: 30px; margin-bottom: 10px;">Presentatie Beeldtaal Analyse</p>
             <p style="font-size: 20px; color: #A0AEC0;">Tom D. Jones</p>
             <!-- Grafisch Element toegevoegd op eindscherm -->
@@ -282,9 +286,9 @@
 
 <!-- Navigatie Knoppen -->
 <div class="nav-bar">
-    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled><i class="fa-solid fa-chevron-left"></i> Terug</button>
+    <button class="nav-btn" id="prevBtn" onclick="goBack()" disabled><i class="fa-solid fa-chevron-left"></i> Terug</button>
     <div class="slide-counter" id="counter">Slide 1 / 7</div>
-    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Verder <i class="fa-solid fa-chevron-right"></i></button>
+    <button class="nav-btn" id="nextBtn" onclick="advance()"><span id="nextText">Toon Tekst</span> <i id="nextIcon" class="fa-solid fa-eye"></i></button>
 </div>
 
 <!-- AI Modal -->
@@ -299,31 +303,75 @@
 
 <script>
     let currentSlide = 0;
+    let overlayShown = false;
     const slides = document.querySelectorAll('.slide-container');
     const totalSlides = slides.length;
+    const nextBtnText = document.getElementById('nextText');
+    const nextBtnIcon = document.getElementById('nextIcon');
 
-    // Initial counter update
-    document.getElementById('counter').innerText = `Slide 1 / ${totalSlides}`;
-
-    function changeSlide(dir) {
-        // Reset de animatie voor de vorige slide
-        slides[currentSlide].classList.remove('active');
-        
-        currentSlide += dir;
-        
-        // Activeer de nieuwe slide, wat de 2 sec animatie start
-        slides[currentSlide].classList.add('active');
-        
+    // Functie om de navigatie interface up te daten (tekst en knoppen status)
+    function updateNav() {
         document.getElementById('counter').innerText = `Slide ${currentSlide + 1} / ${totalSlides}`;
         document.getElementById('prevBtn').disabled = currentSlide === 0;
-        document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        
+        if (!overlayShown) {
+            nextBtnText.innerText = "Toon Tekst";
+            nextBtnIcon.className = "fa-solid fa-eye";
+            document.getElementById('nextBtn').disabled = false;
+        } else {
+            if (currentSlide === totalSlides - 1) {
+                nextBtnText.innerText = "Einde";
+                nextBtnIcon.className = "fa-solid fa-check";
+                document.getElementById('nextBtn').disabled = true;
+            } else {
+                nextBtnText.innerText = "Verder";
+                nextBtnIcon.className = "fa-solid fa-chevron-right";
+                document.getElementById('nextBtn').disabled = false;
+            }
+        }
     }
 
+    // Functie voor Volgende actie (eerst tekst, dan volgende slide)
+    function advance() {
+        if (!overlayShown) {
+            // Fase 1: Toon de tekst overlay
+            slides[currentSlide].classList.add('show-overlay');
+            overlayShown = true;
+            updateNav();
+        } else if (currentSlide < totalSlides - 1) {
+            // Fase 2: Ga naar de volgende slide (en verberg tekst initieel)
+            slides[currentSlide].classList.remove('active', 'show-overlay');
+            currentSlide++;
+            overlayShown = false;
+            slides[currentSlide].classList.add('active');
+            updateNav();
+        }
+    }
+
+    // Functie voor Vorige actie
+    function goBack() {
+        if (currentSlide > 0) {
+            slides[currentSlide].classList.remove('active', 'show-overlay');
+            currentSlide--;
+            overlayShown = false; // We tonen opnieuw eerst de lege foto als we teruggaan
+            slides[currentSlide].classList.add('active');
+            updateNav();
+        }
+    }
+
+    // Navigatie via Toetsenbord (Pijltjes, Enter, Spatiebalk)
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) changeSlide(1);
-        if (e.key === 'ArrowLeft' && currentSlide > 0) changeSlide(-1);
+        if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') {
+            advance();
+        } else if (e.key === 'ArrowLeft') {
+            goBack();
+        }
     });
 
+    // Initialiseer eerste weergave
+    updateNav();
+
+    // AI Functionaliteit (Sprekersnotities)
     const apiKey = ""; 
     const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
@@ -335,7 +383,7 @@
         document.getElementById('aiOut').innerHTML = "";
         
         const currentContent = slides[currentSlide].innerText;
-        const prompt = `Je bent docent fotografie. Schrijf 3 tot 4 korte, krachtige sprekersnotities (in opsommingsvorm) in het Nederlands voor student Erhard Kuyken van Qrios Tongeren. Focus op de formele analyse (compositie, techniek, licht). Inhoud slide: ${currentContent}`;
+        const prompt = `Je bent docent fotografie. Schrijf 3 tot 4 korte, krachtige sprekersnotities (in opsommingsvorm) in het Nederlands voor student Erhard Kuyken van Qrios Tongeren. Focus op de formele analyse (compositie, techniek, licht, etc.). Zorg dat het vlot leest voor een mondelinge presentatie. Inhoud slide: ${currentContent}`;
 
         try {
             const res = await fetch(endpoint, { 
