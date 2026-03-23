@@ -28,20 +28,20 @@
 
         h1, h2, h3 { color: #1A1A1A; font-family: 'Playfair Display', serif; margin: 0; }
         h1 { font-size: 72px; margin-bottom: 15px; }
-        .slide-title { font-size: 40px; margin-bottom: 40px; border-bottom: 1px solid #EEE; padding-bottom: 15px; width: 100%; }
+        .slide-title { font-size: 40px; margin-bottom: 30px; border-bottom: 1px solid #EEE; padding-bottom: 15px; width: 100%; }
         
-        p, li, .subtitle { font-size: 20px; line-height: 1.6; color: #444; font-weight: 300; }
+        p, li, .subtitle { font-size: 19px; line-height: 1.6; color: #444; font-weight: 300; }
         .subtitle { font-family: 'Playfair Display', serif; font-style: italic; color: #777; font-size: 24px; margin-bottom: 30px; }
 
         .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; height: 100%; align-items: center; }
         ul { list-style: none; padding: 0; }
-        li { margin-bottom: 18px; padding-left: 25px; position: relative; }
+        li { margin-bottom: 14px; padding-left: 25px; position: relative; }
         li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: #999; border-radius: 50%; }
 
         .image-wrapper { 
             background: white; 
             border: 1px solid #F0F0F0; 
-            height: 440px; 
+            height: 460px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
@@ -49,11 +49,12 @@
             overflow: hidden; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
-        .image-wrapper img { max-height: 100%; max-width: 100%; object-fit: contain; }
+        .image-wrapper img { max-height: 100%; max-width: 100%; object-fit: contain; width: auto; }
 
         /* ✨ AI FUNCTIONALITEIT STIJL */
-        .ai-fab { position: fixed; bottom: 30px; right: 30px; background: #1A1A1A; color: white; border: none; padding: 14px 24px; border-radius: 30px; cursor: pointer; z-index: 100; box-shadow: 0 5px 15px rgba(0,0,0,0.2); font-family: 'Lato', sans-serif; font-weight: 600; display: flex; align-items: center; gap: 10px; }
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px; }
+        .ai-fab { position: fixed; bottom: 30px; right: 30px; background: #1A1A1A; color: white; border: none; padding: 14px 24px; border-radius: 30px; cursor: pointer; z-index: 100; box-shadow: 0 5px 15px rgba(0,0,0,0.2); font-family: 'Lato', sans-serif; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: transform 0.2s; }
+        .ai-fab:hover { transform: scale(1.05); }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px; }
         .modal-overlay.active { display: flex; }
         .modal-card { background: white; padding: 40px; border-radius: 8px; max-width: 600px; width: 100%; position: relative; max-height: 80vh; overflow-y: auto; }
         .close-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #999; }
@@ -69,91 +70,152 @@
 </head>
 <body>
 
-<!-- Slide 1: Intro -->
+<!-- Slide 1: De Titel -->
 <div class="slide-container" id="slide1">
     <div style="border-left: 4px solid #CCC; padding-left: 40px; margin-top: 60px;">
         <h1>Tom D. Jones</h1>
-        <p class="subtitle">Meester van de Abstracte Rust</p>
-        <p>Opdracht Beeldtaal Analyseren & Toepassen</p>
-        <p style="margin-top: 40px; color: #999; font-size: 18px; border-top: 1px solid #EEE; padding-top: 20px;">
-            <strong>Motivatie:</strong> Focus op de kracht van minimalisme en gereduceerde beeldtaal.
-        </p>
+        <p class="subtitle">De Architectuur van de Stilte</p>
+        <p>Beeldtaal Analyse & Artistieke Vertaling</p>
+        <div style="margin-top: 50px; border-top: 1px solid #EEE; padding-top: 30px; max-width: 600px;">
+            <p style="font-size: 16px; color: #888;">Een verkenning van minimalisme, high-key belichting en de reductie van het landschap tot zijn grafische essentie.</p>
+        </div>
     </div>
 </div>
 
-<!-- Slide 2: Biografie -->
+<!-- Slide 2: De Fotograaf -->
 <div class="slide-container" id="slide2">
-    <h2 class="slide-title">Biografie & Visie</h2>
+    <h2 class="slide-title">De Man achter het Beeld</h2>
     <div class="two-column">
-        <ul>
-            <li><strong>Fotograaf:</strong> Tom D. Jones (Sint-Niklaas).</li>
-            <li><strong>Erkenning:</strong> Bekroond met de <em>Hasselblad Master Award</em> (2012).</li>
-            <li><strong>Visie:</strong> Stilte creëren in een wereld vol visuele ruis.</li>
-            <li><strong>Stijl:</strong> Fine-art landschappen met een grafische essentie.</li>
-        </ul>
+        <div>
+            <p><strong>Visie op Landschap:</strong> Voor Jones is de wereld een bron van chaos die hij via zijn lens filtert tot een staat van serene stilte.</p>
+            <ul>
+                <li><strong>Erkenning:</strong> Bekroond als <em>Hasselblad Master</em> (2012) vanwege zijn ongeëvenaarde techniek in landschapsreductie.</li>
+                <li><strong>Filosofie:</strong> "Weglaten is toevoegen." Hij zoekt naar de universele vorm in plaats van het specifieke detail.</li>
+                <li><strong>Belgisch Talent:</strong> Afkomstig uit Sint-Niklaas, maar internationaal geprezen om zijn verstilde 'Fine Art' stijl.</li>
+            </ul>
+        </div>
         <div class="image-wrapper">
-            <!-- Bestandsnaam met spaties correct gecodeerd -->
-            <img src="Tom%20D%20jones.jpg" alt="Portret van Tom D. Jones">
+            <img src="Tom%20D%20jones.jpg" alt="[Portret van Tom D. Jones]">
         </div>
     </div>
 </div>
 
-<!-- Slide 3: Analyse 1 (Namaken) -->
+<!-- Slide 3: De Signatuur -->
 <div class="slide-container" id="slide3">
-    <h2 class="slide-title">Analyse 1: Te Namaken Werk</h2>
+    <h2 class="slide-title">De Technische Signatuur</h2>
     <div class="two-column">
-        <ul>
-            <li><strong>Compositie:</strong> Lage horizon legt de nadruk op de weidse lucht.</li>
-            <li><strong>Licht:</strong> High-key belichting voor zachte, serene grijstinten.</li>
-            <li><strong>Techniek:</strong> Lange sluitertijd voor abstractie en rust.</li>
-        </ul>
-        <div class="image-wrapper">
-            <img src="Tom-D-Jones---opdracht-namaken-werk.jpg" alt="[Afbeelding van Tom D. Jones Analyse 1]">
+        <div>
+            <p>De werken van Jones zijn technisch complex ondanks hun visuele eenvoud:</p>
+            <ul>
+                <li><strong>ND-Filters & Tijd:</strong> Door het gebruik van extreem zware grijsfilters (tot 10 of 16 stops) worden sluitertijden uitgerekt tot minuten, wat beweging transformeert in nevel.</li>
+                <li><strong>High-Key Belichting:</strong> Hij past vaak <em>Expose to the Right</em> (ETTR) toe. Dit zorgt voor een rijk micro-contrast in de lichte delen zonder dat de schaduwen dichtlopen.</li>
+                <li><strong>LDR (Low Dynamic Range):</strong> Bewuste reductie van het contrast in nabewerking om een 'painterly' effect te bereiken.</li>
+            </ul>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+             <div style="background: #F9F9F9; padding: 20px; border-radius: 4px; text-align: center;">
+                <i class="fa-solid fa-stopwatch" style="font-size: 30px; color: #AAA; margin-bottom: 10px;"></i>
+                <p style="font-size: 14px;">Langdurige Belichting</p>
+             </div>
+             <div style="background: #F9F9F9; padding: 20px; border-radius: 4px; text-align: center;">
+                <i class="fa-solid fa-cloud" style="font-size: 30px; color: #AAA; margin-bottom: 10px;"></i>
+                <p style="font-size: 14px;">Atmosferische Nevel</p>
+             </div>
+             <div style="background: #F9F9F9; padding: 20px; border-radius: 4px; text-align: center;">
+                <i class="fa-solid fa-circle-half-stroke" style="font-size: 30px; color: #AAA; margin-bottom: 10px;"></i>
+                <p style="font-size: 14px;">Zacht Contrast</p>
+             </div>
+             <div style="background: #F9F9F9; padding: 20px; border-radius: 4px; text-align: center;">
+                <i class="fa-solid fa-border-all" style="font-size: 30px; color: #AAA; margin-bottom: 10px;"></i>
+                <p style="font-size: 14px;">Grafische Balans</p>
+             </div>
         </div>
     </div>
 </div>
 
-<!-- Slide 4: Analyse 2 (Viridian) -->
+<!-- Slide 4: Aether H14 -->
 <div class="slide-container" id="slide4">
-    <h2 class="slide-title">Analyse 2: Viridian</h2>
+    <h2 class="slide-title">Oneindigheid: Aether H14</h2>
     <div class="two-column">
-        <ul>
-            <li><strong>Symmetrie:</strong> De horizonlijn zorgt voor een perfecte balans.</li>
-            <li><strong>Kleur:</strong> Subtiel verloop van koel cyaan naar warm pastelgeel.</li>
-            <li><strong>Reflectie:</strong> Water gedraagt zich als een rimpelloze spiegel.</li>
-        </ul>
+        <div>
+            <p>Dit werk is de ultieme vorm van abstractie waarbij de horizonlijn bijna volledig is geëlimineerd.</p>
+            <ul>
+                <li><strong>Beeldtaal:</strong> De overgang tussen zee en lucht is naadloos. Dit creëert een gevoel van gewichtloosheid en oneindigheid.</li>
+                <li><strong>Lichtgebruik:</strong> Een uiterst subtiel palet van parelgrijs en wit. De kijker wordt niet afgeleid door kleur, maar gefocust op de gradatie van licht.</li>
+                <li><strong>Emotie:</strong> Het roept een meditatieve staat op door de totale afwezigheid van visuele ruis of herkenbare ankerpunten.</li>
+            </ul>
+        </div>
         <div class="image-wrapper">
-            <!-- Bestandsnaam met spaties correct gecodeerd -->
-            <img src="Viridian-bekend%20werk%201.jpg" alt="[Afbeelding van Tom D. Jones - Viridian]">
+            <img src="Tom-D-Jones---opdracht-namaken-werk.jpg" alt="[Foto Aether H14]">
         </div>
     </div>
 </div>
 
-<!-- Slide 5: Analyse 3 -->
+<!-- Slide 5: Viridian -->
 <div class="slide-container" id="slide5">
-    <h2 class="slide-title">Analyse 3: Minimalisme</h2>
+    <h2 class="slide-title">Harmonie: Viridian</h2>
     <div class="two-column">
-        <ul>
-            <li><strong>Abstractie:</strong> Zee en lucht smelten dromerig samen.</li>
-            <li><strong>Vorm:</strong> Drie horizontale vlakken in visuele balans.</li>
-            <li><strong>Impact:</strong> Kracht door weglating van alle details.</li>
-        </ul>
+        <div>
+            <p>In 'Viridian' zien we hoe Jones speelt met centrale compositie en kleurgradaties.</p>
+            <ul>
+                <li><strong>Compositie:</strong> De centrale plaatsing van het eilandje fungeert als een visueel rustpunt in een verder lege ruimte.</li>
+                <li><strong>Kleurbalans:</strong> Het contrast tussen het koele blauw op de voorgrond en het warme geel op de horizon zorgt voor een diepte die niet door scherpte, maar door kleur wordt gecreëerd.</li>
+                <li><strong>Textuur:</strong> De lange sluitertijd heeft de branding omgevormd tot een rimpelloze, spiegelende vlakte.</li>
+            </ul>
+        </div>
         <div class="image-wrapper">
-            <img src="bekend-werk-3.jpg" alt="[Afbeelding van Tom D. Jones Analyse 3]">
+            <img src="Viridian-bekend%20werk%201.jpg" alt="[Foto Viridian]">
         </div>
     </div>
 </div>
 
-<!-- AI Sprekersnotities Knop -->
+<!-- Slide 6: Pastel Minimalisme -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Abstractie: Pastel Minimalisme</h2>
+    <div class="two-column">
+        <div>
+            <p>Dit werk toont de reductie van het landschap tot pure geometrische vlakken.</p>
+            <ul>
+                <li><strong>Vlakverdeling:</strong> Het beeld is opgebouwd uit drie horizontale banen. Deze verdeling versterkt de rust en stabiliteit van de foto.</li>
+                <li><strong>Painterly effect:</strong> Door het zachte licht en de lange belichting lijkt de foto bijna op een aquarel schilderij.</li>
+                <li><strong>Focus:</strong> Er is geen specifiek onderwerp; de sfeer en de zachtheid van de overgangen vormen het eigenlijke onderwerp.</li>
+            </ul>
+        </div>
+        <div class="image-wrapper">
+            <img src="bekend-werk-3.jpg" alt="[Foto Pastel Minimalisme]">
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: Vertaling Eigen Werk -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Artistieke Vertaling: Van Kust naar Akker</h2>
+    <div class="two-column">
+        <div>
+            <p><strong>De Uitdaging:</strong> Hoe vertaal je de weidse leegte van de zee naar de gestructureerde velden van het binnenland?</p>
+            <ul>
+                <li><strong>Locatiekeuze:</strong> Zoeken naar een open landschap in Limburg tijdens mistige ochtenduren om de horizon te verzachten.</li>
+                <li><strong>Lenskeuze:</strong> Een telelens (bijv. 200mm) om het landschap plat te drukken (compressie), waardoor details verdwijnen en vlakken overblijven.</li>
+                <li><strong>Techniek:</strong> High-key belichting en een bewuste overbelichting van 1 à 2 stops om de helderheid van Jones te evenaren.</li>
+            </ul>
+        </div>
+        <div class="image-wrapper" style="border: 2px dashed #DDD; background: #FAFAFA; display: flex; flex-direction: column;">
+            <i class="fa-solid fa-camera-retro" style="font-size: 60px; color: #CCC; margin-bottom: 20px;"></i>
+            <p style="color: #AAA; text-align: center; font-size: 16px;">[Hier komt de eigen foto van de Limburgse akker]</p>
+        </div>
+    </div>
+</div>
+
+<!-- ✨ AI Sprekersnotities Knop -->
 <button class="ai-fab" onclick="getNotes()">
     <i class="fa-solid fa-wand-magic-sparkles"></i> ✨ Sprekersnotities
 </button>
 
-<!-- AI Modal -->
+<!-- ✨ AI Modal -->
 <div class="modal-overlay" id="modal">
     <div class="modal-card">
         <button class="close-btn" onclick="closeModal()">&times;</button>
-        <h3 id="mTitle">AI Assistent</h3>
+        <h3 id="mTitle">Sprekersnotities</h3>
         <div id="loader" class="loader"></div>
         <div id="aiOut" style="margin-top: 20px; color: #333; line-height: 1.6;"></div>
     </div>
@@ -186,14 +248,14 @@
             const reply = data.candidates[0].content.parts[0].text;
             document.getElementById('aiOut').innerHTML = reply.replace(/\n/g, '<br>');
         } catch (e) { 
-            document.getElementById('aiOut').innerHTML = "De AI assistent is tijdelijk niet bereikbaar. Controleer je internet."; 
+            document.getElementById('aiOut').innerHTML = "De AI assistent is tijdelijk niet bereikbaar. Controleer je internetverbinding."; 
         } finally { 
             document.getElementById('loader').style.display = 'none'; 
         }
     }
 
     function getNotes() { 
-        callAI(`Schrijf korte, enthousiaste sprekersnotities in het Nederlands voor deze presentatie-slide over de fotograaf Tom D. Jones: ${currentText}`); 
+        callAI(`Je bent een professionele fotografiecoach. Schrijf 3 tot 4 krachtige, mondelinge sprekersnotities in het Nederlands voor een student die deze specifieke slide presenteert over de beeldtaal van Tom D. Jones. Gebruik vaktaal en maak het boeiend voor de klas. Hier is de slide inhoud: ${currentText}`); 
     }
 </script>
 
